@@ -1,0 +1,72 @@
+﻿@using WebsiteKinhDoanhDoGoCuongThai.Models
+@model KHACHHANG
+
+
+@{
+    ViewBag.Title = "Thông tin khách hàng.";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+} 
+
+<div class="content-main">
+    <div>
+        <div class="title-main"> 
+            <h3><i class="fa fa-cubes"></i>THÔNG TIN KHÁCH HÀNG.</h3>
+        </div>
+        <hr />
+        <div class="main-ct">
+
+            <div class="input-group">
+                <label class="lb-mid">MÃ KHÁCH HÀNG:  </label>
+                @Html.DisplayFor(model => model.MaKhachHang)
+            </div>
+
+            <div class="input-group">
+                <label class="lb-mid">TÊN KHÁCH HÀNG:  </label>
+                @Html.DisplayFor(model => model.TenKhachHang)
+            </div>
+
+            <div class="input-group">
+                <label class="lb-mid">TÀI KHOẢN:  </label>
+                @Html.DisplayFor(model => model.TaiKhoan)
+            </div>
+
+            <div class="input-group">
+                <label class="lb-mid">EMAIL:  </label>
+                @Html.DisplayFor(model => model.Email)
+            </div>
+
+            <div class="input-group">
+                <label class="lb-mid">ĐỊA CHỈ:  </label>
+                @Html.DisplayFor(model => model.DiaChi)
+            </div>
+
+            <div class="input-group">
+                <label class="lb-mid">SDT:  </label>
+                @Html.DisplayFor(model => model.SoDienThoai)
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">STK:  </label>
+                @Html.DisplayFor(model => model.SoTaiKhoan)
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">NGÀY SINH:  </label>
+                @String.Format("{0:MM/dd/yyyy}", Model.NgaySinh)
+            </div>
+
+
+        </div>
+        <p>
+            @Html.ActionLink("ĐIỀU CHỈNH", "SuaThongTinKH", new { @MaKhachHang = Model.MaKhachHang }) 
+            @Html.ActionLink("TRỞ VỀ", "Index", "DoGoStore")
+        </p>
+
+    </div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+

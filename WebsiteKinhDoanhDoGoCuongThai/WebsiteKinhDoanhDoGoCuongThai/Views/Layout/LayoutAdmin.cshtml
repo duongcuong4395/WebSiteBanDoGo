@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    @*<script src="~/Scripts/ScriptTemplate/Jquery1.4.2.js"></script>*@
+    @*<link href="css/bootstrap.min.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/bootstrap.min.css" rel="stylesheet" />
+
+    @*<link href="css/font-awesome.min.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/font-awesome.min.css" rel="stylesheet" />
+
+    @*<link href="css/prettyPhoto.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/prettyPhoto.css" rel="stylesheet" />
+
+    @*<link href="css/price-range.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/price-range.css" rel="stylesheet" />
+
+    @*<link href="css/animate.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/animate.css" rel="stylesheet" />
+
+    @*<link href="css/main.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/main.css" rel="stylesheet" />
+
+    @*<link href="css/responsive.css" rel="stylesheet">*@
+    <link href="~/Content/CssTemplate/responsive.css" rel="stylesheet" />
+     
+    <link href="~/Content/CSSTrang.css" rel="stylesheet" /> 
+     
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+    <script src="~/Content/ckeditor.js"></script>
+</head><!--/head-->
+
+<body onload="init()">
+    <div>
+        <header id="header">
+            <!--header-->
+            <div class="header_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="contactinfo">
+                                <ul class="nav nav-pills">
+                                    <li>
+                                        @Html.ActionLink("Trang chủ", "Index", "Admin")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Quản lý loại hàng", "LoaiHangAdmin", "AdminLoaiHang")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Quản lý hàng hóa", "HangHoaAdmin", "AdminHangHoa")
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="social-icons pull-right">
+                                <ul class="sub-log">
+                                    @if (Session["TKAdmin"] != null)
+                                    {
+                                        @Session["TKAdmin"]
+                                    }
+                                    else
+                                    {
+                                        <li><a href="~/Admin/dangnhap"><i class="fa fa-lock"></i>Đăng nhập</a></li>
+                                        <li><a href="/Admin/Dangxuat"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                                    }
+                                    <li><a href="/Admin/ThongtinTaikhoan/@Session["MaTK"]"><i class="fa fa-external-link"></i> Thông tin tài khoản</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header_top-->
+        </header><!--/header-->
+
+        <section>
+            <div class="col-sm-9 ">
+                @RenderBody()
+            </div>
+        </section>
+
+
+        <footer id="footer">
+            @*Div loading page*@
+            <div id="loading" style="position:absolute; width:100%; text-align:center; top:250px;">
+                Đang nạp trang. Vui lòng đợi giây lát!<br />
+                <img src="~/Pictures/Loadingimage/loading.gif" />
+            </div>
+        </footer><!--/Footer-->
+    </div>
+
+    <script>
+        var ld = (document.all);
+        var ns4 = document.layers;
+        var ns6 = document.getElementById && !document.all;
+        var ie4 = document.all;
+        if (ns4)
+            ld = document.loading;
+        else if (ns6)
+            ld = document.getElementById("loading").style;
+        else if (ie4)
+            ld = document.all.loading.style;
+        function init() {
+            if (ns4) { ld.visibility = "hidden"; }
+            else if (ns6 || ie4) ld.display = "none";
+        }
+    </script>
+     
+    @*<script src="js/jquery.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/jquery.js"></script>
+
+    @*<script src="js/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/bootstrap.min.js"></script>
+
+    @*<script src="js/jquery.scrollUp.min.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/jquery.scrollUp.min.js"></script>
+
+    @*<script src="js/price-range.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/price-range.js"></script>
+
+    @*<script src="js/jquery.prettyPhoto.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/jquery.prettyPhoto.js"></script>
+
+    @*<script src="js/main.js"></script>*@
+    <script src="~/Scripts/ScriptTemplate/main.js"></script>
+     
+</body>
+</html>

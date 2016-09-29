@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Layout/LayoutAdmin.cshtml";
+}
+
+<div class="content-main">
+    <div class="title-main">
+        @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+        {
+            <font>
+                <marquee id="marq" scrollamount="3" direction="left" loop="100" scrolldelay="0" behavior="slide" onmouseover="this.stop()" onmouseout="this.start()" style="background:red">
+                    <font color="white"><h3><i class="fa fa-cubes"></i>ADMIN</h3></font>
+                </marquee>
+            </font>
+        }
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@model List<WebsiteKinhDoanhDoGoCuongThai.Models.LIENHE>
+
+
+@{
+    ViewBag.Title = "Liên hệ của hàng";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+
+@section GioHangRenderSection { 
+<div class="container">
+    <h2 style="text-align: center;">LIÊN HỆ CỬA HÀNG</h2>
+    <div class="Map" style="float: right; width: 40%;">
+        <div id="map" style=""></div>
+        <button class="btn btn-primary" onclick="timDuongDi()">Tìm đường đi</button>
+    </div>
+    <div class="gopY" style="float: left; width:60%;">
+
+        <div class="table-responsive">
+            <table class="table" style="width: 75%;" border="0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>Cơ sở sản xuất:</th>
+                        <td>@item.CoSoSanXuat</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>@item.EmailLienHe</td>
+                    </tr>
+                    <tr>
+                        <th>Điện thoại: </th>
+                        <td>@item.DienThoai</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile: </th>
+                        <td>@item.Mobile</td>
+                    </tr>
+                    <tr>
+                        <th>Fax: </th>
+                        <td>@item.Fax</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <table class="table table-condensed">
+                <tr>
+                    <th>Tên người gửi</th>
+                    <td><input type="text" placeholder="Tên người gửi...." maxlength="50" name="TenNguoiGui" title="Không bỏ trống." required /></td>
+                </tr>
+                <tr>
+                    <th>Email: </th>
+                    <td><input type="email" placeholder="NguyenVanAn@gmail.com." maxlength="100" name="Email" title="Không bỏ trống." required /></td>
+                </tr>
+                <tr>
+                    <th>Chủ đề góp ý: </th>
+                    <td><input type="text" placeholder="Tên chủ đề...." maxlength="100" name="ChuDe" title="Không bỏ trống." required /></td>
+                </tr>
+                <tr>
+                    <th>Nội dung: </th>
+                    <td>
+                        @Html.TextArea("NoiDung")
+                        @ViewData["txtNoiDung"]
+                    </td>
+                </tr>
+                <tr>
+                    <td><input name="submit" type="submit" value="Gửi"></td>
+                    <td></td>
+                </tr>
+            </table>
+        }
+    </div>
+    </div>
+}
+<style>
+    #map {
+        width: 100%;
+        height: 300px;
+    }
+
+
+    #slider, #loaidogo {
+        display: none;
+    }
+</style>

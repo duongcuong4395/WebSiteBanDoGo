@@ -1,0 +1,149 @@
+﻿@using WebsiteKinhDoanhDoGoCuongThai.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<HANGHOA>
+
+@{
+    ViewBag.Title = "Hàng hóa admin";
+    Layout = "~/Views/Layout/LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ HÀNG HÓA</h2>
+
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "ThemSanPhamAdmin", "AdminHangHoa")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th style="width: 70px">
+            LOẠI HÀNG
+        </th>
+        <th style="width: 200px">
+            TÊN HÀNG
+        </th>
+        <th style="width: 200px">
+            MÔ TẢ
+        </th>
+        <th style="width: 50px">
+            GIÁ CẢ
+        </th>
+        <th style="width: 115px">
+            KHUYẾN MÃI
+        </th>
+        <th style="width: 100px">
+            NGÀY NHẬP
+        </th>
+        <th style="width: 120px">
+            HÌNH ẢNH
+        </th>
+        <th style="width: 100px">
+            KÍCH THƯỚC
+        </th>
+        <th style="width: 80px">
+            LOẠI GỖ
+        </th>
+        <th style="width: 95px">
+            BẢO HÀNH
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAIHANG.TenLoaiHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMatHang)
+            </td>
+            <td>
+                @if (item.MoTa != null)
+                {
+                    @Html.Raw(item.MoTa)
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold">Chưa cập nhật.... </p>
+                }
+                @*@Truncate(100, item.MoTa)*@
+            </td>
+            <td>
+                <p>@String.Format("{0:0,0}", item.DonGia) VND</p>
+            </td>
+            <td>
+                @if (item.KhuyenMai != null)
+                {
+                    <p>@item.KhuyenMai</p>
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold">Chưa cập nhật.... </p>
+                }
+                @*@Html.DisplayFor(modelItem => item.KhuyenMai)*@
+            </td>
+            <td>
+                @if (item.NgayNhap != null)
+                {
+                    <p>@item.NgayNhap</p>
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold">Chưa cập nhật.... </p>
+                }
+                @*@Html.DisplayFor(modelItem => item.NgayNhap)*@
+            </td>
+            <td>
+                <img src="@Url.Content("~/Pictures/HangHoa/" + item.HinhAnh)" class="anhbia" alt="@item.HinhAnh" />
+            </td>
+            <td>
+                @if (item.KichThuoc != null)
+                {
+                    <p>@item.KichThuoc</p>
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold">Chưa cập nhật.... </p>
+                }
+                @*@Html.DisplayFor(modelItem => item.KichThuoc)*@
+            </td>
+            <td>
+                @if (item.LoaiGo != null)
+                {
+                    <p>@item.LoaiGo</p>
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold">Chưa cập nhật.... </p>
+                }
+                @*@Html.DisplayFor(modelItem => item.LoaiGo)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaoHanh) Tháng
+            </td>
+            <td>
+                <p style="font-size:14px;">@Html.ActionLink("Sửa sản phẩm", "SuaThongtinSP", new { id = item.MaMatHang })</p>
+                <hr />
+                <p style="font-size:14px;">@Html.ActionLink("Xem chi tiết", "XemChiTietAdmin", new { @MaMatHang = item.MaMatHang })</p>
+                <hr />
+                <p style="font-size:14px;">@Html.ActionLink("Xóa sản phẩm", "XoaPham", new { id = item.MaMatHang })</p>
+            </td>
+        </tr>
+    }
+</table>
+
+@*Tạo liên kết các trang *@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("HangHoaAdmin", new { page = page }))
+</div>
+
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+
+    .anhbia {
+        height: 200px;
+        width: 150px;
+    }
+</style>

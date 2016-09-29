@@ -1,0 +1,94 @@
+﻿@model WebsiteKinhDoanhDoGoCuongThai.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Sửa thông tin khách hàng.";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+
+
+@using (Html.BeginForm("SuaThongTinKH", "NguoiDung", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+
+    <div class="title-main">
+
+        <h3><i class="fa fa-cubes"></i>SỬA THÔNG TIN KHÁCH HÀNG</h3>
+
+
+    </div>
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MaKhachHang)
+
+        <div class="main-ct">
+
+
+            <div class="input-group">
+                <label class="lb-mid">Tên khách hàng:    </label>
+                <input type="text" name="TENKH" value="@Model.TenKhachHang" maxlength="50" required />
+                @Html.ValidationMessageFor(model => model.TenKhachHang)
+
+            </div> 
+            <div class="input-group">
+                <label class="lb-mid">Tên tài khoản:  @Model.TaiKhoan  </label>
+                <input type="text" name="TENTAIKHOAN" value="@Model.TaiKhoan" maxlength="20" required hidden />
+                @Html.ValidationMessageFor(model => model.TaiKhoan)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Mật khẩu:    </label>
+                <input type="text" name="MATKHAU" value="@Model.MatKhau" maxlength="30" required />
+                @Html.ValidationMessageFor(model => model.MatKhau)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Email:    </label>
+                <input type="email" name="EMAIL" value="@Model.Email" maxlength="100" required />
+                @Html.ValidationMessageFor(model => model.Email)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Địa chỉ:    </label>
+                <input type="text" name="DIACHI" value="@Model.DiaChi" maxlength="50" required />
+                @Html.ValidationMessageFor(model => model.DiaChi)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Số điện thoại:    </label>
+                <input type="number" name="SODT" maxlength="12" value="@Model.SoDienThoai" min="0900000000" max="099999999999" required />
+                @Html.ValidationMessageFor(model => model.SoDienThoai)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Số tài khoản:    </label>
+                <input type="number" name="SOTAIKHOAN" value="@Model.SoTaiKhoan" maxlength="30" required />
+                @Html.ValidationMessageFor(model => model.SoTaiKhoan)
+
+            </div>
+            <div class="input-group">
+                <label class="lb-mid">Ngày sinh:    </label>
+                <input type="date" name="NGAYSINH" value="@Model.NgaySinh" required />
+                @Html.ValidationMessageFor(model => model.NgaySinh)
+
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="form-group">
+            <div class="btn-submit">
+                <input class="btn btn-default" type="submit" value="&#xf046; Lưu" name="save"  /> 
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại", "Index", "DoGoStore")
+</div>
+
+
