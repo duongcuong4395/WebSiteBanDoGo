@@ -75,7 +75,6 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Trong tổng 
 <div class="MenuTrang">
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 </div>
- 
 <style> 
     #cart_items,  .XemChiTiet {
         display: none; 

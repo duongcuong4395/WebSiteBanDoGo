@@ -1,15 +1,18 @@
 ﻿@model WebsiteKinhDoanhDoGoCuongThai.Models.KHACHHANG
 @using BotDetect.Web.Mvc;
 
-@* Đăng ký Capcha*@
-<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
-@{ MvcCaptcha dangkyCapcha = new MvcCaptcha("dangkyCapcha"); }
- 
+
+
 @{
     ViewBag.Title = "Đăng ký người dùng";
     Layout = "~/Views/Layout/LayoutUser.cshtml";
 }
-  
+
+  @* Đăng ký Capcha*@
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+@{ MvcCaptcha dangkyCapcha = new MvcCaptcha("dangkyCapcha"); }
+
+
 <div class="container" id="KhungDangKy">
     <div class="row">
         <div class="col-sm-4">
@@ -31,10 +34,25 @@
                     @*<p>* Số điện thoại      </p>*@<input type="number" placeholder="Số Điện thoại" maxlength="15" oninput="maxLengthCheck(this)" name="SoDienThoai" required /><strong style="color: red;"> @ViewData["txtSoDienThoai"]</strong>
                     @*<p>* Tài khoản: (Số tài khoản không vượt quá 16 chữ số.)</p>*@<input type="number" placeholder="Số tài khoản" min="100000000000" max="999999999999" oninput="maxLengthCheck(this)" maxlength="16" name="SoTaiKhoan" required /><strong style="color: red;"> @ViewData["txtTaiKhoan"]</strong>
                     //Captcha
-                    <div id="Captcha">
-                        @Html.Captcha(dangkyCapcha);
-                        @Html.TextBox("CaptchaCode")
-                    </div> 
+                    if (!dangkyCapcha.IsSolved)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                @Html.Captcha(dangkyCapcha)
+                            </div>
+
+
+                            @Html.Label("Mã An toàn", new
+                           {
+                               @class = "col-md-4 control-label",
+                               @for = "CaptchaCode"
+                           })
+
+                            <div class="col-md-8">
+                                @Html.TextBox("CaptchaCode", null, new { @class = "form-control captchaVal" })
+                            </div>
+                        </div>
+                    }
                     <button type="submit" class="btn btn-default" value="Đăng ký">Đăng ký</button> 
                 }
                 
@@ -66,3 +84,4 @@
     }
 </script>
 
+@Scripts.Render("~/Scripts/captcha.validate.js")

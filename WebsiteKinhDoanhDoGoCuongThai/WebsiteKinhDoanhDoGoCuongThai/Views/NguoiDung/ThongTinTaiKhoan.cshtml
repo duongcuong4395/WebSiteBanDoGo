@@ -4,9 +4,9 @@
 
 @{
     ViewBag.Title = "Thông tin khách hàng.";
+   
     Layout = "~/Views/Layout/LayoutUser.cshtml";
 } 
-
 <div class="content-main">
     <div>
         <div class="title-main"> 
@@ -14,10 +14,10 @@
         </div>
         <hr />
         <div class="main-ct">
-
+            
             <div class="input-group">
                 <label class="lb-mid">MÃ KHÁCH HÀNG:  </label>
-                @Html.DisplayFor(model => model.MaKhachHang)
+                @Html.DisplayFor(id => id.MaKhachHang)
             </div>
 
             <div class="input-group">
@@ -56,7 +56,7 @@
 
         </div>
         <p>
-            @Html.ActionLink("ĐIỀU CHỈNH", "SuaThongTinKH", new { @MaKhachHang = Model.MaKhachHang }) 
+            @Html.ActionLink("ĐIỀU CHỈNH", "SuaThongTinKH", new { id = Model.MaKhachHang }) 
             @Html.ActionLink("TRỞ VỀ", "Index", "DoGoStore")
         </p>
 

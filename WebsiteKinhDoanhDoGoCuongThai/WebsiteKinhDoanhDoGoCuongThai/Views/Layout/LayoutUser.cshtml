@@ -1,30 +1,30 @@
-﻿<!DOCTYPE html> 
-<html xmlns ="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content= @ViewBag.Description >
-        <meta name="author" content="">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=@ViewBag.Description>
+    <meta name="author" content=@ViewBag.Author>
+    <meta name="keywords" content=@ViewBag.Keywords>
 
-        <meta property=”fb:app_id” content=”1771182203170473” />
+    <title>@ViewBag.Title</title>
 
-        <meta property=”fb:admins” content=”100004974873010” />
+    <link href="~/Content/CssTemplate/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/CssTemplate/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/CssTemplate/price-range.css" rel="stylesheet" />
+    <link href="~/Content/CssTemplate/animate.css" rel="stylesheet" />
+    <link href="~/Content/CssTemplate/main.css" rel="stylesheet" />
+    <link href="~/Content/CssTemplate/responsive.css" rel="stylesheet" />
+    <link href=”http://yoursite.com/favicon.ico” rel=”shortcut icon” />
+    <link rel="shortcut icon" href="favicon.ico">
 
-        <title>@ViewBag.Title</title> 
+    @RenderSection("HeadIncludes", required: false)
+    <meta property=”fb:app_id” content=”1771182203170473” />
+    <meta property=”fb:admins” content=”100004974873010” />
+</head><!--/head-->
 
-        <link href="~/Content/CssTemplate/bootstrap.min.css" rel="stylesheet" /> 
-        <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" /> 
-        <link href="~/Content/CssTemplate/prettyPhoto.css" rel="stylesheet" /> 
-        <link href="~/Content/CssTemplate/price-range.css" rel="stylesheet" /> 
-        <link href="~/Content/CssTemplate/animate.css" rel="stylesheet" /> 
-        <link href="~/Content/CssTemplate/main.css" rel="stylesheet" /> 
-        <link href="~/Content/CssTemplate/responsive.css" rel="stylesheet" /> 
-        <link href=”http://yoursite.com/favicon.ico” rel=”shortcut icon” />
-        <link rel="shortcut icon" href="favicon.ico"> 
-
-    </head><!--/head-->
-
-<body onload="init()"> 
+<body onload="init()">
     <header id="header">
         <!--header-->
         <div class="header_top">
@@ -57,12 +57,12 @@
         <div class="header-middle">
             <!--header-middle-->
             <div class="container">
-                <div class="row" >
+                <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
                             <a href="@Url.Action("Index","DoGoStore")">
                                 @*<img src="~/Pictures/Logo/logo3.png" alt="DoGoCuongThai.jpg" style="width: 95%; height: 80%;" />*@
-                                <img src="~/Pictures/Logo/logo7.png" alt="DoGoCuongThai.jpg" class="img-responsive"  />
+                                <img src="~/Pictures/Logo/logo7.png" alt="DoGoCuongThai.jpg" class="img-responsive" />
                             </a>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div><!--/header-middle-->
-         
+
         <div class="header-bottom">
             <!--header-bottom-->
             <div class="container">
@@ -90,8 +90,8 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <div class="mainmenu pull-left"> 
-                            @Html.Partial("MenuChinhPartial") 
+                        <div class="mainmenu pull-left">
+                            @Html.Partial("MenuChinhPartial")
                         </div>
                     </div>
                     <div class="col-sm-3" style="width: 30%; float: right">
@@ -99,307 +99,306 @@
                             @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
                             {
                                 <div style="float:left;">
-                                    <input type="text" placeholder="Tìm kiếm...." name="txtTimKiem" class="txtTimKiem" required/> 
-                                    
+                                    <input type="text" placeholder="Tìm kiếm...." name="txtTimKiem" class="txtTimKiem" required />
+
                                 </div>
                                 <div style=" float:right;">
-                                    <button type="submit" class="btn btn-default" style="width: 40%;" >
-                                        <img src="~/Pictures/Loadingimage/ic_search_48px-128.png" style="width: 50%; height: 50%"/> 
+                                    <button type="submit" class="btn btn-default" style="width: 40%;">
+                                        <img src="~/Pictures/Loadingimage/ic_search_48px-128.png" style="width: 50%; height: 50%" />
                                     </button>
                                 </div>
-                            } 
+                            }
                         </div>
                     </div>
-                </div> 
-            </div>
-        </div><!--/header-bottom--> 
-    </header><!--/header--> 
-
-    
-
-        <section id="cart_items">
-            <div class="container">
-                <div class="table-responsive cart_info">
-                    @RenderSection("GioHangRenderSection", false)
                 </div>
             </div>
-        </section> <!--/#cart_items-->
+        </div><!--/header-bottom-->
+    </header><!--/header-->
 
-        <section id="slider">
+
+
+    <section id="cart_items">
+        <div class="container">
+            <div class="table-responsive cart_info">
+                @RenderSection("GioHangRenderSection", false)
+            </div>
+        </div>
+    </section> <!--/#cart_items-->
+
+    <section id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-6">
+                                    <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
+                                    <h2>Nơi bạn gặt hái thành công.</h2>
+                                    <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p>
+                                </div>
+                                <div class="col-sm-6" style="height:auto">
+                                    @*<img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />*@
+                                    <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/BCP37.JPG" />
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
+                                    <h2>Nơi bạn gặt hái thành công.</h2>
+                                    <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p>
+                                </div>
+                                <div class="col-sm-6" style="height:auto">
+                                    @*<img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />*@
+                                    <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/PH 014SD.jpg" />
+
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
+                                    <h2>Nơi bạn gặt hái thành công.</h2>
+                                    <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p>
+                                </div>
+                                <div class="col-sm-6" style="height:auto">
+                                    @*<img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />*@
+                                    <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/BỘ BÀN GHẾ MINH QUỐC ĐÀO.jpg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" id="loaidogo" style="width: 20%;">
+                    @*Div Chứa loại đồ gỗ *@
+                    <div class="left-sidebar">
+                        <h2>LOẠI HÀNG</h2>
+                        <div class="panel-group category-products" id="accordian">
+                            @Html.Action("LoaiDoGoPartial", "LoaiDoGo")
+                        </div><!--/category-pro ducts-->
+
+                        <div class="shipping text-center">
+                            <!--shipping-->
+                            <img src="images/home/shipping.jpg" alt="" />
+                        </div><!--/shipping-->
+                        <div class="shipping text-center">
+                            <!--shipping-->
+                            <img src="images/home/shipping.jpg" alt="" />
+                        </div><!--/shipping-->
+                        <div class="shipping text-center">
+                            <!--shipping-->
+                            <img src="images/home/shipping.jpg" alt="" />
+                        </div><!--/shipping-->
+
+                    </div>
+                </div>
+
+                @RenderSection("LienHeRenderSection", false)
+
+                <div class="col-sm-9 padding-right">
+                    <!--features_items-->
+                    @RenderBody()
+
+                    @*Div Xem chi tiet*@
+
+                    <div class="XemChiTiet">
+                        <div class="col-sm-12">
+                            @RenderSection("XemChiTiet", false)
+                        </div>
+                    </div>
+                    <div class="recommended_items">
+                        @Html.Action("layHangBanChay", "DoGoStore")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#slider-carousel" data-slide-to="1"></li>
-                                <li data-target="#slider-carousel" data-slide-to="2"></li>
-                            </ol>
-
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="col-sm-6">
-                                        <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
-                                        <h2>Nơi bạn gặt hái thành công.</h2>
-                                        <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p> 
-                                    </div>
-                                    <div class="col-sm-6" style="height:auto">
-                                        @*<img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />*@
-                                        <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/BCP37.JPG" />
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="col-sm-6">
-                                        <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
-                                        <h2>Nơi bạn gặt hái thành công.</h2>
-                                        <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p> 
-                                    </div>
-                                    <div class="col-sm-6" style="height:auto">
-                                        @*<img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />*@
-                                        <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/PH 014SD.jpg" />
-
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="col-sm-6">
-                                        <h2 style="color: orange;">Đồ gỗ Cường - Thái</h2>
-                                        <h2>Nơi bạn gặt hái thành công.</h2>
-                                        <p>Đồ gỗ Cường - Thái Nơi bạn không phải thất vọng khi quay về.</p> 
-                                    </div>
-                                    <div class="col-sm-6" style="height:auto">
-                                        @*<img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />*@
-                                        <img class="img-responsive" style="width: 60%; height: 45%;" src="~/Pictures/HangHoa/BỘ BÀN GHẾ MINH QUỐC ĐÀO.jpg" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <a href="@Url.Action("Index","DoGoStore")" class="active">
+                                <img src="~/Pictures/Logo/logo7.png" alt="DoGoCuongThai.jpg" class="img-responsive" style="height: 70px; width: 350px;" />
                             </a>
-                            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
+                            <p style="font-size: 16px;">Nơi bạn gặt hái thành công.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-3">
+                            <a href="https://www.facebook.com/profile.php?id=100004974873010">
+                                <div class="video-gallery text-center">
+                                    <div class="iframe-img">
+                                        @*<img src="images/home/iframe1.png" alt="" />*@
+                                        <img src="~/Pictures/imagesTemplate/home/iframe1.png" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                    <p>Đặng Dường Cường</p>
+                                    <h2>Chủ sáng lập</h2>
+                                </div>
                             </a>
                         </div>
-
+                        <div class="col-sm-3">
+                            <a href="https://www.facebook.com/kang.nguyen.900">
+                                <div class="video-gallery text-center">
+                                    <div class="iframe-img">
+                                        @*<img src="images/home/iframe2.png" alt="" />*@
+                                        <img src="~/Pictures/imagesTemplate/home/iframe2.png" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                    <p>Nguyễn Minh Thái</p>
+                                    <h2>Đồng sáng lập</h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="https://www.facebook.com/kang.nguyen.900">
+                                <div class="video-gallery text-center">
+                                    <div class="iframe-img">
+                                        @*<img src="images/home/iframe2.png" alt="" />*@
+                                        <img src="~/Pictures/imagesTemplate/home/iframe2.png" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                    <p>Nguyễn Minh Thái</p>
+                                    <h2>Đồng sáng lập</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="width: 25%;">
                     </div>
                 </div>
             </div>
-        </section>
-
-
-        <section>
+        </div>
+        <div class="footer-widget">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3" id="loaidogo" style="width: 20%;">
-                        @*Div Chứa loại đồ gỗ *@
-                        <div class="left-sidebar">
-                            <h2>LOẠI HÀNG</h2>
-                            <div class="panel-group category-products" id="accordian">
-                                @Html.Action("LoaiDoGoPartial", "LoaiDoGo")
-                            </div><!--/category-pro ducts--> 
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Service</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Online Help</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Order Status</a></li>
+                                <li><a href="#">Change Location</a></li>
+                                <li><a href="#">FAQ’s</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Quock Shop</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">T-Shirt</a></li>
+                                <li><a href="#">Mens</a></li>
+                                <li><a href="#">Womens</a></li>
+                                <li><a href="#">Gift Cards</a></li>
+                                <li><a href="#">Shoes</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Policies</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Privecy Policy</a></li>
+                                <li><a href="#">Refund Policy</a></li>
+                                <li><a href="#">Billing System</a></li>
+                                <li><a href="#">Ticket System</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>ĐỒ GỖ CƯỜNG THÁI</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="@Url.Action("LienHeCuaHang", "DoGoStore")">Liên hệ</a></li>
 
-                            <div class="shipping text-center">
-                                <!--shipping-->
-                                <img src="images/home/shipping.jpg" alt="" />
-                            </div><!--/shipping-->
-                            <div class="shipping text-center">
-                                <!--shipping-->
-                                <img src="images/home/shipping.jpg" alt="" />
-                            </div><!--/shipping-->
-                            <div class="shipping text-center">
-                                <!--shipping-->
-                                <img src="images/home/shipping.jpg" alt="" />
-                            </div><!--/shipping-->
-
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <div class="single-widget">
+                            <h2>About Shopper</h2>
+                            <form action="#" class="searchform">
+                                <input type="text" placeholder="Your email address" />
+                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                            </form>
                         </div>
                     </div>
 
-                    @RenderSection("LienHeRenderSection", false)
-
-                    <div class="col-sm-9 padding-right">
-                        <!--features_items-->
-                        @RenderBody()
-                         
-                        @*Div Xem chi tiet*@ 
-                        
-                        <div class="XemChiTiet">
-                            <div class="col-sm-12">
-                                @RenderSection("XemChiTiet", false)
-                            </div>
-                        </div> 
-                        <div class="recommended_items">
-                            @Html.Action("layHangBanChay", "DoGoStore")
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
-        <footer id="footer">
-            <!--Footer-->
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="companyinfo">
-                                <a href="@Url.Action("Index","DoGoStore")" class="active"> 
-                                    <img src="~/Pictures/Logo/logo7.png" alt="DoGoCuongThai.jpg" class="img-responsive" style="height: 70px; width: 350px;"/>
-                                </a>
-                                <p style="font-size: 16px;">Nơi bạn gặt hái thành công.</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="col-sm-3">
-                                <a href="https://www.facebook.com/profile.php?id=100004974873010">
-                                    <div class="video-gallery text-center">
-                                        <div class="iframe-img">
-                                            @*<img src="images/home/iframe1.png" alt="" />*@
-                                            <img src="~/Pictures/imagesTemplate/home/iframe1.png" />
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                        <p>Đặng Dường Cường</p>
-                                        <h2>Chủ sáng lập</h2>
-                                    </div>
-                                </a>
-                            </div> 
-                            <div class="col-sm-3">
-                                <a href="https://www.facebook.com/kang.nguyen.900">
-                                    <div class="video-gallery text-center">
-                                        <div class="iframe-img">
-                                            @*<img src="images/home/iframe2.png" alt="" />*@
-                                            <img src="~/Pictures/imagesTemplate/home/iframe2.png" />
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                        <p>Nguyễn Minh Thái</p>
-                                        <h2>Đồng sáng lập</h2>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="https://www.facebook.com/kang.nguyen.900">
-                                    <div class="video-gallery text-center">
-                                        <div class="iframe-img">
-                                            @*<img src="images/home/iframe2.png" alt="" />*@
-                                            <img src="~/Pictures/imagesTemplate/home/iframe2.png" />
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                        <p>Nguyễn Minh Thái</p>
-                                        <h2>Đồng sáng lập</h2>
-                                    </div>
-                                </a>
-                            </div>   
-                        </div>
-                        <div class="col-sm-3" style="width: 25%;">  
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="footer-widget">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="single-widget">
-                                <h2>Service</h2>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#">Online Help</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Order Status</a></li>
-                                    <li><a href="#">Change Location</a></li>
-                                    <li><a href="#">FAQ’s</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="single-widget">
-                                <h2>Quock Shop</h2>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#">T-Shirt</a></li>
-                                    <li><a href="#">Mens</a></li>
-                                    <li><a href="#">Womens</a></li>
-                                    <li><a href="#">Gift Cards</a></li>
-                                    <li><a href="#">Shoes</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="single-widget">
-                                <h2>Policies</h2>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#">Terms of Use</a></li>
-                                    <li><a href="#">Privecy Policy</a></li>
-                                    <li><a href="#">Refund Policy</a></li>
-                                    <li><a href="#">Billing System</a></li>
-                                    <li><a href="#">Ticket System</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="single-widget">
-                                <h2>ĐỒ GỖ CƯỜNG THÁI</h2>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#">Giới thiệu</a></li>
-                                    <li><a href="@Url.Action("LienHeCuaHang", "DoGoStore")">Liên hệ</a></li> 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-sm-offset-1">
-                            <div class="single-widget">
-                                <h2>About Shopper</h2>
-                                <form action="#" class="searchform">
-                                    <input type="text" placeholder="Your email address" />
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                    <p>Get the most recent updates from <br />our site and be updated your self...</p>
-                                </form>
-                            </div>
-                        </div>
+        </div>
 
-                    </div>
+        @*Div loading page*@
+        <div id="loading" style="position:absolute; width:100%; height:auto; text-align:center; top:250px;">
+            Hệ thống đang quá tài. Vui lòng đợi giây lát!<br />
+            <img src="~/Pictures/Loadingimage/loading.gif" />
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left"> Đặng Dường Cường - Nguyễn Minh Thái</p>
+                    @*<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>*@
                 </div>
             </div>
+        </div>
+    </footer><!--/Footer-->
+    <!--Loadingpage-->
+    <script src="~/Scripts/ScriptLoadingPage/LoadingPage.js"></script>
 
-            @*Div loading page*@
-            <div id="loading" style="position:absolute; width:100%; height:auto; text-align:center; top:250px;">
-                Hệ thống đang quá tài. Vui lòng đợi giây lát!<br />
-                <img src="~/Pictures/Loadingimage/loading.gif" />
-            </div>
+    <script src="~/Scripts/ScriptTemplate/jquery.js"></script>
 
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <p class="pull-left"> Đặng Dường Cường - Nguyễn Minh Thái</p>
-                        @*<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>*@
-                    </div>
-                </div>
-            </div> 
-        </footer><!--/Footer-->
-  
-        <!--Loadingpage-->
-        <script src="~/Scripts/ScriptLoadingPage/LoadingPage.js"></script>
+    <script src="~/Scripts/ScriptTemplate/bootstrap.min.js"></script>
 
-        <script src="~/Scripts/ScriptTemplate/jquery.js"></script>
+    <script src="~/Scripts/ScriptTemplate/jquery.scrollUp.min.js"></script>
 
-        <script src="~/Scripts/ScriptTemplate/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptTemplate/price-range.js"></script>
 
-        <script src="~/Scripts/ScriptTemplate/jquery.scrollUp.min.js"></script>
+    <script src="~/Scripts/ScriptTemplate/jquery.prettyPhoto.js"></script>
 
-        <script src="~/Scripts/ScriptTemplate/price-range.js"></script>
+    <script src="~/Scripts/ScriptTemplate/main.js"></script>
 
-        <script src="~/Scripts/ScriptTemplate/jquery.prettyPhoto.js"></script>
+    @*Script Mã hóa mật khẩu*@
+    @*<script src="~/Scripts/ScriptMaHoa/MaHoaScript.js"></script>*@
 
-        <script src="~/Scripts/ScriptTemplate/main.js"></script>
-
-        @*Script Mã hóa mật khẩu*@
-        @*<script src="~/Scripts/ScriptMaHoa/MaHoaScript.js"></script>*@
-
-        <!--Google Map-->
-        <script src="~/Scripts/ScriptGoogleMap/GoogleMap.js"></script>
+    <!--Google Map-->
+    <script src="~/Scripts/ScriptGoogleMap/GoogleMap.js"></script>
 
     <!--SKFace-->
     <div id="fb-root"></div>
@@ -412,10 +411,10 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-   
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgu-Biz5geySgi99huIbX4bvUpmKtlV8&callback=initMap">
-        </script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgu-Biz5geySgi99huIbX4bvUpmKtlV8&callback=initMap">
+    </script>
 
 </body>
 </html>

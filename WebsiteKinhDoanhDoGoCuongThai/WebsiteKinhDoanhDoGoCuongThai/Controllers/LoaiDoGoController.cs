@@ -23,8 +23,7 @@ namespace WebsiteKinhDoanhDoGoCuongThai.Controllers
         }
 
         public ViewResult SanPhamTheoLoaiDoGo(int? page, string maloaihang = " ")
-        {
-
+        { 
             //Tạo biến Quy định sô sản phẩm trên 1 trang
             int pagesize = 12;
             //Tạo biến số sang
@@ -45,8 +44,6 @@ namespace WebsiteKinhDoanhDoGoCuongThai.Controllers
                 ViewBag.HANGHOA = "Không tìm thấy loại thàng nào";
             }
             return View(lstHangHoa.ToPagedList(pagenum, pagesize));
-        }
-
-
+        }  
     }
 }

@@ -69,7 +69,7 @@ namespace WebsiteKinhDoanhDoGoCuongThai.Controllers
                 db.HOMTHUs.InsertOnSubmit(homthu);
                 db.SubmitChanges();
             }
-            return RedirectToAction("Index", "DoGoStore");
+            return this.LienHeCuaHang();
         }
 
         public ActionResult layHangBanChay()

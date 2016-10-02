@@ -19,7 +19,7 @@
             <div class = "product-image-wrapper">
                 <div class = "single-products">
                     <div class = "productinfo text-center">
-                        <img src = "/Pictures/@item.HinhAnh" alt = "@item.HinhAnh" style = "width: 60%; height: 100%" />
+                        <img src = "/Pictures/HangHoa/@item.HinhAnh" alt = "@item.TenMatHang" style = "width: 60%; height: 100%" />
                         <h2>@String.Format("{0:0,0}", item.DonGia) VND</h2>
                         @if (@item.TenMatHang.Length < 20)
                         {
@@ -32,7 +32,7 @@
                         <a href = "@Url.Action("XemChiTiet","DoGo", new {@MaMatHang = item.MaMatHang})" class = "btn btn-default add-to-cart"><i class = "fa fa-shopping-cart"></i>Xem chi tiết</a>
                     </div>
                     <div class = "product-overlay">
-                        <img src="~/Pictures/@item.HinhAnh" alt = "@item.HinhAnh" style = "width: 60%; height: 100%; margin-left:20%; padding-bottom: 50%" />
+                        <img src="/Pictures/HangHoa/@item.HinhAnh" alt = "@item.TenMatHang" style = "width: 60%; height: 100%; margin-left:20%; padding-bottom: 50%" />
                         <div class = "overlay-content">
                             <h2>@String.Format("{0:0,0}", item.DonGia) VND</h2>
                             @if (@item.TenMatHang.Length < 20)

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminLoaiHangController.cs" />
+    <Compile Include="Controllers\CaptchaHelper.cs" />
     <Compile Include="Controllers\DoGoController.cs" />
     <Compile Include="Controllers\DoGoStoreController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -396,6 +397,7 @@
     <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Scripts\captcha.validate.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -531,7 +533,6 @@
     <Content Include="Views\DoGoStore\layHangBanChay.cshtml" />
     <Content Include="Views\DoGoStore\layHangHoaBanChayActive.cshtml" />
     <Content Include="Views\DoGoStore\layHangBanChayitem.cshtml" />
-    <None Include="Views\Layout\LayoutUser.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -557,7 +558,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
     <Content Include="Views\TimKiem\KetQuaTimKiem.cshtml" />
     <Content Include="Views\NguoiDung\DangKyNguoiDung.cshtml" />
     <Content Include="Views\NguoiDung\ThongTinTaiKhoan.cshtml" />
@@ -565,6 +565,9 @@
     <Content Include="Views\Shared\DangNhapPartial.cshtml" />
     <Content Include="Views\LoaiDoGo\SanPhamTheoLoaiDoGo.cshtml" />
     <Content Include="Views\Shared\MenuChinhPartial.cshtml" />
+    <Content Include="Views\NguoiDung\LayMatKhau.cshtml" />
+    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\Layout\LayoutUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

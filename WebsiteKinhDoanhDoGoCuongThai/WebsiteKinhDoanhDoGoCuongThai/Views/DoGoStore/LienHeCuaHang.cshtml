@@ -9,34 +9,34 @@
 @section GioHangRenderSection { 
 <div class="container">
     <h2 style="text-align: center;">LIÊN HỆ CỬA HÀNG</h2>
-    <div class="Map" style="float: right; width: 40%;">
+    <div class="Map" style="float: right; width: 50%; padding-right:5%">
         <div id="map" style=""></div>
         <button class="btn btn-primary" onclick="timDuongDi()">Tìm đường đi</button>
     </div>
-    <div class="gopY" style="float: left; width:60%;">
+    <div class="gopY" style="float: left; width:40%;">
 
         <div class="table-responsive">
-            <table class="table" style="width: 75%;" border="0">
+            <table class="table" style="width: auto" border="0">
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <th>Cơ sở sản xuất:</th>
+                        <th style="width: 30%">Cơ sở sản xuất:</th>
                         <td>@item.CoSoSanXuat</td>
                     </tr>
                     <tr>
-                        <th>Email:</th>
+                        <th style="width: 30%">Email:</th>
                         <td>@item.EmailLienHe</td>
                     </tr>
                     <tr>
-                        <th>Điện thoại: </th>
+                        <th style="width: 30%">Điện thoại: </th>
                         <td>@item.DienThoai</td>
                     </tr>
                     <tr>
-                        <th>Mobile: </th>
+                        <th style="width: 30%">Mobile: </th>
                         <td>@item.Mobile</td>
                     </tr>
                     <tr>
-                        <th>Fax: </th>
+                        <th style="width: 30%">Fax: </th>
                         <td>@item.Fax</td>
                     </tr>
                 }
@@ -80,7 +80,7 @@
     }
 
 
-    #slider, #loaidogo {
+    #slider, #loaidogo, #main {
         display: none;
     }
 </style>
