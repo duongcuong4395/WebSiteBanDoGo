@@ -1,0 +1,99 @@
+﻿@using WebsiteBanDogo.Models
+@model HANGHOA
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Layout/LayoutUser.cshtml"; 
+}
+
+@section XemChiTiet {
+    <div class="product-details">
+        <!--product-details-->
+        <h3>@Model.TenMatHang</h3>
+        <div id="fb-root"></div>
+        <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId=169088780207376";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="col-sm-5">
+            <div class="view-product">
+                <div class="flexslider">
+                    <img  class="img-responsive " src="@Url.Content("~/Pictures/HangHoa/" + Model.HinhAnh)" alt=""/>
+                </div> 
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="product-information"> 
+                    @if (Model.KhuyenMai == 0)
+                    {
+                        <p style="color: red; font-weight: bold; font-size: 18pt;">@String.Format("{0:0,0}", Model.DonGia) VNĐ </p>
+                    }
+                    else
+                    {
+                        <p style="color: red; font-weight: bold; font-size: 18pt;">@String.Format("{0:0,0}", Model.GiaMoi) VNĐ</p>
+                        <p>Giá trước đây: <s style="color: red; font-weight: bold;">@String.Format("{0:0,0}", Model.DonGia) VNĐ</s></p>
+                    } 
+                <table>
+                    <tr>
+                        <th>Mã sản phẩm: </th>
+                        <td>@Model.MaMatHang</td>
+                    </tr>
+                    <tr>
+                        <th>Kích thước: </th>
+                        <td>@Model.KichThuoc</td>
+                    </tr>
+                    <tr>
+                        <th>Loại gỗ: </th>
+                        <td>@Model.LoaiGo</td>
+                    </tr>
+                    <tr>
+                        <th>Bảo hành: </th>
+                        <td><p style="color: red; font-size: 18pt;">@Model.BaoHanh Tháng</p></td>
+                    </tr>
+                </table> 
+                <div class="fb-like" data-href="https://www.facebook.com/DoGoCuongThai/" data-width="300" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                <div style="clear: both" ></div>
+                <div>
+                    <button type="button" class="btn btn-default add-to-cart">
+                        <p style="font-size: 20pt; font-weight: bold; color: blue;"><a href="@Url.Action("ThemGioHang", "GioHang", new { @sMaMatHang = @Model.MaMatHang, @strURL = Request.Url.ToString() })">ĐẶT MUA</a></p>
+                    </button>
+                </div>
+                @Html.Raw(@Model.LinkThanhToan) 
+                @*<div class="embed-responsive embed-responsive-4by3" >
+                    <iframe class="embed-responsive-item" frameborder="0" marginwidth="0" marginheight="0" src="http://www.reviewcompany.vn/free-service/gold/" scrolling="yes"></iframe>
+                </div>*@ 
+            </div>
+        </div> 
+        <div> 
+            <div class="fb-comments" data-href="https://localhost:2482/DoGo/XemChiTiet/@Model.MaMatHang" data-numposts="5"></div>
+        </div>
+              
+    </div>
+
+
+
+    @*<div class="recommended_items">
+            @Html.Action("layHangBanChay", "DoGoStore")
+        </div>*@
+}
+
+@*Css Thong tin sach*@
+<style>
+    #MUA {
+        background: -moz-linear-gradient(top, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* IE10+ */
+        background: -o-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.1*/
+    }
+
+    #slider, .brands_products, .recommended_items {
+        display: none;
+    } 
+</style> 

@@ -1,0 +1,117 @@
+﻿@model WebsiteBanDogo.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "SuaDonDatHang";
+    Layout = "~/Views/Layout/LayoutAdmin.cshtml";
+}
+
+<div class="header">
+
+    <h1 class="page-title">Sửa sản phẩm</h1>
+    <ul class="breadcrumb">
+        <li><a href="/Admin/Index">Trang chủ </a> </li>
+        @*<li><a href="users.html">Users</a> </li>
+            <li class="active">jsmith</li>*@
+    </ul> 
+</div>
+
+<div class="main-content">  
+    <div class="row">
+        <div class="col-md-4">
+            <br> 
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active" id="home">
+@using (Html.BeginForm("SuaDonDatHang", "AdminDonDatHang", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MaDonDatHang)
+                    <form id="tab">
+                        <div class="form-group">
+                            <label>NGÀY ĐĂNG KÝ MUA (@Model.NgayLap)</label>
+                            <input type="date" name="NgayLap" value="@String.Format("{0:MM/dd/yyyy}", @Model.NgayLap)" max="@string.Format("{0:yyyy-MM-dd}", @DateTime.Now)" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>HÌNH THỨC THANH TOÁN</label>
+                            @Html.EditorFor(model => model.HinhThucThanhToan)
+                            @Html.ValidationMessageFor(model => model.HinhThucThanhToan)
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn  Ngày giao hàng (@Model.NgayGiaoHang)</label>
+                            <input class="form-control" type="date" name="NGAYGIAOHANG" min="@string.Format("{0:yyyy-MM-dd}", @DateTime.Now)" value="@Model.NgayGiaoHang" required />
+                            @Html.ValidationMessageFor(model => model.NgayGiaoHang)
+                        </div>
+                        <div class="form-group">
+                            <label>TÌNH TRẠNG THANH TOÁN</label>
+                            @Html.EditorFor(model => model.TinhTrangThanhToan)
+                            @Html.ValidationMessageFor(model => model.TinhTrangThanhToan)
+                        </div>
+
+                        <div class="form-group">
+                            <label>TÌNH TRẠNG GIAO</label>
+                            @Html.EditorFor(model => model.TinhTrangGiao)
+                            @Html.ValidationMessageFor(model => model.TinhTrangGiao)
+                        </div>
+
+                        <div class="form-group">
+                            <label>KHÁCH HÀNG: </label>
+                             <p>@ViewBag.NguoiDatHang</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>HỌ TÊN NGƯỜI NHẬN</label>
+                            <input class="form-control" type="text" name="HOTENNGUOINHAN" value="@Model.HoTenNguoiNhan" maxlength="50" required />
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>ĐỊA CHỈ NGƯỜI NHẬN</label>
+                            <input class="form-control" type="text" name="DIACHINGUOINHAN" value="@Model.DiaChiNguoiNhan" maxlength="50" required />
+                            @Html.ValidationMessageFor(model => model.DiaChiNguoiNhan)
+                        </div>
+
+                        <div class="form-group">
+                            <label>SDT NGƯỜI NHẬN</label>
+                            <input class="form-control" type="text" name="SODTNGUOINHAN" value="@Model.SoDienThoaiNguoiNhan" min="090000000" max="099999999999999" required />
+                            @Html.ValidationMessageFor(model => model.SoDienThoaiNguoiNhan)
+                        </div> 
+                        <div class="btn-toolbar list-toolbar">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu</button>
+                            <button type="reset">Hủy</button>
+                        </div>
+                    </form> 
+                    }
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Delete Confirmation</h3>
+                </div>
+                <div class="modal-body"> 
+                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the user?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <hr> 
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
+</div>

@@ -1,0 +1,33 @@
+﻿<div class="navbar-header"> 
+    <div class=".col-md-4">
+        <img src="~/Pictures/Logo/logo7.png" class="img-responsive" style="height:80%; width: 20%" alt="logo.png" />
+    </div> 
+</div>
+
+<div class="navbar-collapse collapse" style="height: 1px;">
+    <ul id="main-menu" class="nav navbar-nav navbar-right">
+        <li class="dropdown hidden-xs">
+            @if (Session["TKAdmin"] != null)
+            {
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> @Session["HoTenAdmin"]
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="./">Thông tin @Session["HoTenAdmin"]</a></li>
+                    @*<li class="divider"></li>
+                    <li class="dropdown-header">Admin Panel</li>
+                    <li><a href="./">Users</a></li>
+                    <li><a href="./">Security</a></li>
+                    <li><a tabindex="-1" href="./">Payments</a></li>
+                    <li class="divider"></li>*@
+                    <li><a tabindex="-1" href="/Admin/DangXuat">Đăng xuất</a></li>
+                </ul> 
+            }
+            else
+            {
+                 <p>Chưa rõ Admin</p>
+            } 
+        </li>
+    </ul>
+</div>
