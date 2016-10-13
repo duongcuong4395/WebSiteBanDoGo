@@ -25,10 +25,8 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td  >
-                        <a href="@Url.Action("XemChiTiet", "DoGo", new {id = item.sMaMatHang })">
-                            <img style="width: 70%; height:30%" src="~/Pictures/HangHoa/@item.sAnhBia" id="anhbia" alt="@item.sAnhBia" />
-                        </a>
+                    <td> 
+                        <img style="width: 70%; height:30%" src="~/Pictures/HangHoa/@item.sAnhBia" id="anhbia" alt="@item.sAnhBia" /> 
                     </td>
                     <td class="cart_description" height="100px">
                         <p width="1%;"><a href="">@item.sTenHangHoa</a></p>
@@ -49,12 +47,13 @@
                             <p class="cart_total_price" style="color: red; font-weight:bold;">@String.Format("{0:0,0}", item.dThanhTien) VND</p>
                         </td>
                         <td   >
-                            <a href="@Url.Action("XemChiTiet", "DoGo", new {id = item.sMaMatHang })">Chi tiết</a>
+                            <a href="@Url.Action("XemChiTiet", "DoGo", new {id = item.sMaMatHang })"><i class="fa fa-list-alt fa-2x" aria-hidden="true"></i> Chi tiết</a>
+                            <br /> 
+                            <a class="cart_quantity_delete" href="@Url.Action("XoaGioHang", "GioHang", new {id = item.sMaMatHang })"><i class="fa fa-trash-o fa-2x"></i> Xóa sản phẩm</a>
                             <br />
-                            @*<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>*@
-                            <a class="cart_quantity_delete" href="@Url.Action("XoaGioHang", "GioHang", new {id = item.sMaMatHang })">Xóa</a>
-                            <br />
-                            <input type="submit" value="Cập nhật" />
+                            <button type="submit" class="btn btn-default btn-lg btn-block" style="width: 30px; height: 40px;">
+                                <i class="fa fa-refresh fa-1x" aria-hidden="true"></i>
+                            </button> 
                         </td>
                     }
                 </tr>
@@ -65,11 +64,8 @@
             </tr>
             <tr style="font-weight: bold; color: blue; text-align: right">
                 <td colspan="9"> 
-                    <i class="fa fa-trash-o fa-lg"> 
-                        @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang")
-                        
-                    </i>
-                    
+                    <i class="fa fa-trash-o fa-lg"> </i>
+                        @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang") 
                 </td>
             </tr>
             <tr style="font-weight: bold; color: blue; text-align: right">

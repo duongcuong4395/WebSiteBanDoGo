@@ -1,16 +1,12 @@
-﻿@using WebsiteBanDogo.Models
-@model List<LOAIHANG>
-
-
-@foreach (var item in Model)
-{
-    <div class="panel panel-default">
-        <a href="@Url.Action("SanPhamTheoLoaiDoGo", new { id = item.MaLoaiHang })">
-            <div class="panel-heading" style="background-color: Highlight;">
-                <h3 class="panel-title" style="color: black;"> @item.TenLoaiHang </h3>
-            </div>
-        </a>
-    </div>
-}
-
-
+﻿ 
+<div class="list-group">
+    @foreach (var item in Model)
+    {  
+        <a href="@Url.Action("SanPhamTheoLoaiDoGo", new { @MaLoaiHang = item.MaLoaiHang })" class="list-group-item list-group-item-action">
+            @item.TenLoaiHang
+            <span class="badge badge-info">
+                @item.SL 
+            </span>
+        </a> 
+    }
+</div> 

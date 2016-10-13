@@ -17,14 +17,10 @@ function maxLengthCheck(object) {
 
     if (object.value.length > object.maxLength) {
         alert("Đã vượt quá số lượng cho phép");
-        object.value = object.value.slice(0, object.maxLength);
-        
-    }
-
-    
+        object.value = object.value.slice(0, object.maxLength); 
+    } 
 }
-
-
+ 
 function VietKhongDau(object) {
     //
     var str;
@@ -46,7 +42,4 @@ function VietKhongDau(object) {
     str = str.replace(/^\-+|\-+$/g, "");
     //cắt bỏ ký tự - ở đầu và cuối chuỗi 
     eval(object).value = str;
-}
-
-
-//Băt lỗi bỏ trống ô input
+} 

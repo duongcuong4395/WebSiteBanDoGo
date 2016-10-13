@@ -19,6 +19,6 @@ namespace WebsiteBanDogo.Controllers
                 return null;
             }
             return View(hang);
-        }
+        } 
     }
 }

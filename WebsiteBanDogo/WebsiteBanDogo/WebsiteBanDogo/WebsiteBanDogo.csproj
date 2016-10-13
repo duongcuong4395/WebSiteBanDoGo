@@ -174,6 +174,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminDonDatHangController.cs" />
+    <Compile Include="Controllers\AdminKhachHangController.cs" />
     <Compile Include="Controllers\DoGoController.cs" />
     <Compile Include="Controllers\DoGoStoreController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -464,6 +465,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Pictures\cuong.JPG" />
+    <Content Include="Pictures\GioiThieuCuaHang\Hinh1.png" />
+    <Content Include="Pictures\GioiThieuCuaHang\Hinh2.png" />
+    <Content Include="Pictures\GioiThieuCuaHang\Hinh3.png" />
     <Content Include="Pictures\HangHoa\BA232.jpg" />
     <Content Include="Pictures\HangHoa\BCP06.JPG" />
     <Content Include="Pictures\HangHoa\BCP08.JPG" />
@@ -531,6 +535,7 @@
     <Content Include="Pictures\Logo\logo5.png" />
     <Content Include="Pictures\Logo\logo6.png" />
     <Content Include="Pictures\Logo\logo7.png" />
+    <Content Include="Pictures\Map.PNG" />
     <Content Include="Pictures\page-loader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -624,7 +629,6 @@
     <Content Include="Scripts\ThemScript\material.min.js" />
     <Content Include="Scripts\ThemScript\moment-with-locales.min.js" />
     <Content Include="Scripts\ThemScript\TongHopScriptMoi.js" />
-    <Content Include="Scripts\ThemScript\zoom.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\DangNhap.cshtml" />
@@ -633,6 +637,11 @@
     <Content Include="Views\AdminKhoHang\SuaSanPhamAmin.cshtml" />
     <Content Include="Views\AdminKhoHang\HienLoaiSanPham.cshtml" />
     <Content Include="Views\AdminDonDatHang\SuaDonDatHang.cshtml" />
+    <Content Include="Views\DoGoStore\DShangYeuThich.cshtml" />
+    <Content Include="Views\DoGoStore\GioiThieuCuaHang.cshtml" />
+    <Content Include="Views\DoGoStore\soLuongNguoiXem.cshtml" />
+    <Content Include="Views\AdminKhachHang\dsKhachHang.cshtml" />
+    <Content Include="Views\AdminKhachHang\dsthichsanpham.cshtml" />
     <None Include="Views\Layout\LayoutAdmin.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -694,6 +703,7 @@
     <Content Include="Views\Shared\MenuOptionAdminPartial.cshtml" />
     <Content Include="Views\Shared\MenuChinhAdminPartial.cshtml" />
     <Content Include="Views\Shared\DangNhapAdminPartial.cshtml" />
+    <Content Include="Views\Shared\FooterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

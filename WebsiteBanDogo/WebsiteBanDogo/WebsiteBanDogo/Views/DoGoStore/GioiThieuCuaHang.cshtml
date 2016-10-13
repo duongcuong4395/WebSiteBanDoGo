@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "GioiThieuCuaHang";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+  
+    <div class="features_items"> 
+        <h2 class="title text-center">Giới thiệu cửa hàng</h2> 
+        <div>
+            <img src="/Pictures/Logo/logo7.png" width="500" />
+        </div>
+        <div>
+            <img src="/Pictures/GioiThieuCuaHang/@ViewBag.hinh1" class="pull-right inline-img hidden-xs" style="max-width: 35%; margin-left: 1em;" />
+            <h2 class="page">@ViewBag.tieude1</h2>
+            <p>@ViewBag.noidung1</p>
+
+            <h2 class="page">@ViewBag.tieude2</h2>
+            <img src="/Pictures/GioiThieuCuaHang/@ViewBag.hinh2" class="pull-left inline-img hidden-xs" style="max-width: 35%; margin-top: -4em; margin-right: 2.25em;" />
+            <p>@ViewBag.noidung2.</p>
+
+            <h2 class="page" style="clear:both;">@ViewBag.tieude3</h2>
+            <img src="~/Pictures/GioiThieuCuaHang/@ViewBag.hinh3" class="pull-right inline-img hidden-xs" style="max-width: 35%; margin-top: -4em; margin-left: 1em;" />
+            <p>@ViewBag.noidung3.</p>
+        </div>
+        <p>Trân trọng cảm ơn Quý khách hàng gần xa đã tín nhiệm và ủng hộ  và kính chúc Quý khách hàng hạnh phúc, sức khỏe và thành đạt. </p>
+        <br />
+        <p style="color: rgb(51, 102, 255);">Mọi chi tiết vui lòng liên hệ:</p>
+        <p style="color: rgb(51, 102, 255);">Hotline 1: @ViewBag.hotline1</p>
+        <p style="color: rgb(51, 102, 255);">Hotline 2: @ViewBag.hotline2</p>
+        <p style="color: rgb(51, 102, 255);">Hotline 3: @ViewBag.hotline3</p>
+    </div> 
+
+<style>
+    .recommended_items {
+        display: none;
+    }
+</style>
+

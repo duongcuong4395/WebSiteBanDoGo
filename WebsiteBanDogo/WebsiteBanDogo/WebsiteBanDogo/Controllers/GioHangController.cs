@@ -83,15 +83,15 @@ namespace WebsiteBanDogo.Controllers
         }
 
         //Xóa hàng trong giỏ hàng
-        public ActionResult XoaGioHang(string MaMatHang=" ")
+        public ActionResult XoaGioHang(string id)
         {
             //Lấy giỏ hàng có trong session["GioHang"]
             List<GioHang> lstGioHang = layGioHang();
             //Kiểm tra hàng trong giỏ
-            GioHang layHangHoa = lstGioHang.SingleOrDefault(n => n.sMaMatHang == MaMatHang);
+            GioHang layHangHoa = lstGioHang.SingleOrDefault(n => n.sMaMatHang == id);
             if (layHangHoa != null)
             {
-                lstGioHang.RemoveAll(n => n.sMaMatHang == MaMatHang);
+                lstGioHang.RemoveAll(n => n.sMaMatHang == id);
                 return RedirectToAction("GioHang");
             }
 
@@ -103,12 +103,12 @@ namespace WebsiteBanDogo.Controllers
         }
 
         //Cập nhật giỏ hàng
-        public ActionResult CapNhatGioHang( FormCollection frmCollection, string MaMatHang=" " )
+        public ActionResult CapNhatGioHang( FormCollection frmCollection, string id)
         {
             //Lấy giỏ hàng từ Session["GioHang"]
             List<GioHang> lstGioHang = layGioHang(); 
             //Kiểm tra sản phẩm đã có trong giỏ
-            GioHang sp = lstGioHang.SingleOrDefault(n => n.sMaMatHang == MaMatHang);
+            GioHang sp = lstGioHang.SingleOrDefault(n => n.sMaMatHang == id);
             if (sp != null)
             {
                 sp.iSoLuong = int.Parse(frmCollection["txtSoLuong"].ToString());  

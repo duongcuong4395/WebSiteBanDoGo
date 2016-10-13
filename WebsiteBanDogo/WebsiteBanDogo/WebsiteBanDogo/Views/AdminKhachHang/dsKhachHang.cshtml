@@ -1,14 +1,11 @@
-﻿@using PagedList.Mvc;
-@using WebsiteBanDogo.Models
-@model PagedList.PagedList<DONDATHANG>
-
+﻿@using WebsiteBanDogo.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<KHACHHANG>  
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "dsKhachHang";
     Layout = "~/Views/Layout/LayoutAdmin.cshtml";
 }
-
-
 
 <div class="header">
     <div class="stats">
@@ -24,103 +21,71 @@
     </ul>
 
 </div>
-<div class="main-content"> 
+
+<div class="main-content">
     <div class="panel panel-default">
-        <div class="panel-heading no-collapse">
-            <span class="panel-icon pull-right">
-                <button type="reset" class="demo-cancel-click" rel="tooltip" title="" data-original-title="Click to refresh"><i class="fa fa-refresh"></i></button>  
-            </span>
-            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
-            {
-                <p>ĐƠN DẶT HÀNG</p>
-            }
-        </div>
-        <div id="page-stats" class="panel-collapse panel-body collapse in">
-            <!--Quản lý đơn đặt hàng-->
-            
-            <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Ngày lập</th>
-                            <th>Hình Thức Thanh Toán</th>
-                            <th>Ngày giao</th>
-                            <th>Tình trạng</th>
-                            <th>Tình trạng giao</th>
-                            <th>Người đặt</th>
-                            <th>Người nhận</th>
-                            <th>Địa chỉ người nhận</th>
-                            <th>Số điện thoại người nhận</th>
-                            <th style="width: 3.5em;">Lựa chọn</th>
+        <a href="#page-stats" class="panel-heading" data-toggle="collapse">Hiện sản phẩm</a>
+        <div id="page-stats" class="panel-collapse panel-body collapse in" style="height: auto;">
+            <!--Hiện sản phẩm-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên khách hàng</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th> 
+                        <th style="width: 3.5em;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int sothuthu = 0;}
+                    @foreach (var item in Model)
+                    {
+                        sothuthu++; 
+                        <tr> 
+                            <td>@sothuthu</td>
+                            <td> 
+                                @if (item.TenKhachHang != null)
+                                {
+                                    @item.TenKhachHang
+                                }
+                                else
+                                {
+                                    <p style="color: red; "><strong>Khách hàng thứ @sothuthu vẫn chưa có tên</strong> </p>
+                                }
+                            </td>
+                            <td>@item.Email</td>
+                            <td>
+                                @if (item.DiaChi != null)
+                                {
+                                    <p>@Html.Raw(item.DiaChi.Substring(0, 6))</p>
+                                }
+                                else
+                                {
+                                    <p style="color: red; "><strong>Khách hàng chưa cập nhật địa chỉ.</strong> </p>
+                                }
+                            </td>
+                            <td>@item.SoDienThoai</td>
+                            <td>
+                                 @item.GioiTinh
+                            </td>
+                            <td>
+                                 @item.NgaySinh
+                            </td> 
+                            <td>
+                                <a href="@Url.Action("SuaThongTinKhachHang", new { id = item.MaKhachHang })"><i class="fa fa-pencil"></i></a>
+                                @*<a href="@Url.Action("dsthichsanpham", new { id = item.MaKhachHang })" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>*@
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @{ int sothuthu = 0;}
-                        @foreach (var item in Model)
-                        {
-                            sothuthu++;
-                            <tr>
-                                <td>@sothuthu</td>
-                                <td>
-                                    @String.Format("{0:dd/MM/yyyy}", item.NgayLap)
-                                </td>
-                                <td>
-                                    @if (item.HinhThucThanhToan == true)
-                                    {
-                                        <p>THANH TOÁN KHI NHẬN HÀNG</p>
-                                    }
-                                    else
-                                    {
-                                        <p> TRẢ PHÍ QUA THẺ</p>
-                                    }
-
-
-                                </td>
-                                <td>
-                                    @String.Format("{0:MM/dd/yyyy}", item.NgayGiaoHang)
-                                </td>
-                                <td>
-                                    @if (item.TinhTrangThanhToan == true)
-                                    {
-                                        <p>ĐÃ THU PHÍ</p>
-                                    }
-                                    else
-                                    {
-                                        <p> CHƯA THU PHÍ</p>
-                                    }
-
-                                </td>
-                                <td>
-                                    @if (item.TinhTrangGiao == true)
-                                    {
-                                        <p>ĐÃ GIAO</p>
-                                    }
-                                    else
-                                    {
-                                        <p> CHƯA GIAO</p>
-                                    }
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.KHACHHANG.TenKhachHang)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HoTenNguoiNhan)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DiaChiNguoiNhan)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SoDienThoaiNguoiNhan)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("SuaDonDatHang","AdminDonDatHang", new { @id = item.MaDonDatHang })"><i class="fa fa-pencil"></i></a> 
-                                </td>
-                            </tr>
-                        } 
-                    </tbody>
-                </table> 
+                    }
+                </tbody>
+            </table>
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("dsKhachHang", new { page = page }))
             </div>
         </div>
     </div>
@@ -150,10 +115,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading no-collapse">
                     <span class="panel-icon pull-right">
-                        <a href="#" class="demo-cancel-click" rel="tooltip" title="Click to refresh"><i class="fa fa-refresh"></i></a>
+                        <a href="#" class="demo-cancel-click" rel="tooltip" title="" data-original-title="Click to refresh"><i class="fa fa-refresh"></i></a>
                     </span>
-
-                    Needed to Close
+                    Chi tiết sản phẩm
                 </div>
                 <table class="table list">
                     <tbody>

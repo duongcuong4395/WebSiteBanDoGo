@@ -28,10 +28,8 @@ namespace WebsiteBanDogo.Controllers
             //neu ket qua ko tim thay hang
             if (lstHangHoa.Count == 0)
             {
-                ViewBag.ThongBao = "Không tìm thấy hàng hóa nào.";
-                return View(db.HANGHOAs.OrderBy(n => n.TenMatHang).ToPagedList(pageNumber, pageSize));
-            }
-            ViewBag.ThongBao = chuoiTimKiem;  
+                ViewBag.ThongBao = "Không tìm thấy hàng hóa nào."; 
+            } 
             return View(lstHangHoa.OrderBy(n => n.TenMatHang).ToPagedList(pageNumber, pageSize));
              
         }
@@ -49,8 +47,7 @@ namespace WebsiteBanDogo.Controllers
             //neu ket qua ko tim thay hang
             if (lstHangHoa.Count == 0)
             {
-                ViewBag.ThongBao = "Không tìm thấy hàng hóa nào.";
-                return View(db.HANGHOAs.OrderBy(n => n.TenMatHang).ToPagedList(pageNumber, pageSize));
+                ViewBag.ThongBao = "Không tìm thấy hàng hóa nào."; 
             }
 
             ViewBag.ThongBao = chuoiTimKiem; 

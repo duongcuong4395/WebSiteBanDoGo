@@ -9,7 +9,8 @@
 }
 
 <div class="features_items"> 
-    <h2 class="title text-center">HÀNG MỚI NHẬP</h2>v 
+    <h2 class="title text-center">HÀNG MỚI NHẬP</h2> 
+    <h3>@ViewBag.ThongBao</h3>
     @{int dem = 0;}
     @foreach (var item in Model)
     {
@@ -55,9 +56,7 @@
                 </div>
                 <div class="choose">
                     <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
-                        @*<li><a href="#"><i class="fa fa-plus-square"></i>Góp ý </a></li>*@
-                        @*<li><a href="@Url.Action("ThemGioHang", "GioHang", new { @MaMatHang = item.MaMatHang, @strURL = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>đặt mua</a></li>*@
+                        <li><a href="@Url.Action("ThemSPYeuThich", "DoGoStore", new { MaMatHang = @item.MaMatHang, @strURL = Request.Url.ToString() })"><i class="fa fa-plus-square"></i>Thích sản phẩm</a></li> 
                         <li><a href="@Url.Action("ThemGioHang", "GioHang", new { @sMaMatHang = @item.MaMatHang, @strURL = Request.Url.ToString() }) "><i class=" fa fa-shopping-cart"></i>đặt mua</a></li>
                     </ul>
                 </div>
