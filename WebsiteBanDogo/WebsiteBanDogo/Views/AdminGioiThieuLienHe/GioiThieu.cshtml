@@ -1,0 +1,69 @@
+﻿<div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+        <a href="#GIOITHIEU" class="panel-heading" data-toggle="collapse">GIỚI THIỆU</a>
+        <div id="GIOITHIEU" class="panel-body collapse in" style="height: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">STT</th>
+                        <th style="width: 15%;">Tiêu đề</th>
+                        <th style="width: 47%; padding-left: 3%">Nội dung</th>
+                        <th>Hình ảnh</th>
+                        <th>Hotline</th>
+                        <th style="width: 3.5em;"></th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="scroll_box">
+                <table class="table">
+                    <thead hidden="hidden">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Hình ảnh</th>
+                            <th>Hotline</th>
+                            <th style="width: 3.5em;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int stt = 0;}
+                        @foreach (var item in Model)
+                        {
+                            stt++;
+                            <tr>
+                                <td>@stt</td>
+                                <td> @item.TieuDe </td>
+                                <td>
+                                    @if (@item.NoiDung.Length < 50)
+                                    {
+                                        <p>@Html.Raw(item.NoiDung) </p>
+                                    }
+                                    else
+                                    {
+                                        <p> @Html.Raw(item.NoiDung) ...</p>
+                                    }
+                                </td>
+                                <td>
+                                    <img src="@Url.Content("/Pictures/GioiThieuCuaHang/" + item.HinhAnhGioiThieu )" class="img-responsive" style="height: 50%" alt="@item.HinhAnhGioiThieu" />
+                                </td>
+                                <td>@item.Hotline </td>
+                                <td>
+                                    <a href="@Url.Action("SuaGioiThieu", "AdminGioiThieuLienHe", new { @MaGioiThieu = item.MaGioiThieu })"><i class="fa fa-pencil"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #scroll_box {
+        border: 1px solid #ffffff;
+        height: 240px;
+        overflow: auto;
+    }
+</style>

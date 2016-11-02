@@ -1,0 +1,26 @@
+﻿<div class="price-range">
+    <!--price-range-->
+    <h2>TÌM THEO GIÁ</h2>
+    <div class="well text-center">
+        @using (Html.BeginForm("TimKiemTheoGiaMoi", "TimKiem", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <form class="pricing">
+                <div class="form-group"> 
+                    <div class="col-md-10">
+                        <input type="number" placeholder="Bắt đầu từ giá......" class="form-control" name="GiaNho" maxlength="6" oninput="maxLengthCheck(this)" onkeypress='return isNumberKey(event)' style="margin-left: -30%;" required /> 
+                    </div>
+                    <text style="color: red; font-size: 16px; margin-left: 50%;"> 000 VND.</text>
+                </div> 
+                <div class="form-group"> 
+                    <div class="col-md-10">
+                        <input type="number" placeholder="Đến giá......" class="form-control" name="GiaLon" maxlength="6" oninput="maxLengthCheck(this)" onkeypress='return isNumberKey(event)' style="margin-left: -30%;" required /> 
+                    </div>
+                    <text style="color: red; font-size: 16px; margin-left: 50%;"> 000 VND.</text>
+                </div> 
+                <input type="submit" class="btn btn-default" value="Tìm sản phẩm">
+            </form> 
+        }
+    </div>
+</div>

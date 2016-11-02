@@ -1,0 +1,12 @@
+﻿ 
+<div class="list-group">
+    @foreach (var item in Model)
+    {  
+        <a href="@Url.Action("SanPhamTheoLoaiDoGo", new { @MaLoaiHang = item.MaLoaiHang })" class="list-group-item list-group-item-action">
+            @item.TenLoaiHang
+            <span class="badge badge-info">
+                @item.SL 
+            </span>
+        </a> 
+    }
+</div> 

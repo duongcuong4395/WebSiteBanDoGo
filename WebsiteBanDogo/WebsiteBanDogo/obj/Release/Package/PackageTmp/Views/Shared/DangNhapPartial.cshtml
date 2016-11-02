@@ -1,0 +1,24 @@
+﻿
+
+@if (Session["Taikhoan"] != null)
+{
+    if (Session["GioHang"] != null)
+    {
+        <li>
+            <p></p><a href="@Url.Action("GioHang", "GioHang")"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
+        </li> 
+    }
+    else
+    {
+        <li>Chưa mua hàng.</li>
+    }
+    <li><a href="@Url.Action("DShangYeuThich", "DoGoStore")">Sản phẩm yêu thích</a></li>
+    <li><a class="color4" href="#">Chào @Session["TenKhachHang"] |</a></li>
+    <li>  @Html.ActionLink("Thông tin tài khoản", "ThongTinTaiKhoan", "NguoiDung") </li>
+    <li><a class="color4" href="@Url.Action("DoiMatKhau", "Nguoidung")" style="color:#18C9D2">Đổi mật khẩu</a></li>
+    <li><a class="color4" href="@Url.Action("logout", "Nguoidung")" style="color:#18C9D2">Thoát</a></li>
+}
+else
+{ 
+    <li><a href="@Url.Action("chucNangDKDN", "NguoiDung")"><i class="fa fa-lock"></i>Đăng ký/Đăng nhập</a></li>
+}

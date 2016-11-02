@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="login-form">
+            <!--login form-->
+            <h2 style="text-align: center;">ĐỔI MẬT KHẨU</h2> 
+            <div style="clear:both;"></div>
+            <h4 style="color:red; text-align:center">@ViewBag.ThongBao</h4>
+            <div style="clear:both;"></div>
+            <div style="border: 1px;">
+                @using (Html.BeginForm("DoiMatKhau", "NguoiDung", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <p>Mật khẩu hiện tại:     <input id="Nhap" type="password" placeholder="Mật khẩu cũ...." maxlength="50" oninput="VietKhongDau(this)" data-toggle="tooltip" data-placement="bottom" name="MatKhauCu" title="Không bỏ trống ô mật khẩu." required /><strong style="color:red;">@ViewData["txtMatKhauCu"]</strong></p>
+                    <p>Mật Khẩu Mới:          <input id="Nhap" type="password" placeholder="Mật khẩu mới....." maxlength="50" oninput="VietKhongDau(this)" data-toggle="tooltip" data-placement="bottom" name="MatKhauMoi" title="Không bỏ trống ô mật khẩu." required /><strong style="color:red;">@ViewData["txtMatKhauMoi"]</strong></p>
+                    <p>Xác nhận mật Khẩu mới: <input id="Nhap" type="password" placeholder="Xác nhận mật khẩu mới....." maxlength="50" oninput="VietKhongDau(this)" data-toggle="tooltip" data-placement="bottom" name="XacNhanMK" title="Không bỏ trống ô mật khẩu." required /><strong style="color:red;">@ViewData["txtXacNhan"]</strong></p>
+                    
+                    <button type="submit" class="btn btn-default">Đổi mật khẩu</button>
+                }
+            </div>
+        </div><!--/login form-->
+    </div>
+</div> 

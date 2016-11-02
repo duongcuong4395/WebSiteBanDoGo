@@ -1,0 +1,57 @@
+﻿ 
+@*<div class="panel panel-default">
+    <a href="#page-stats" class="panel-heading" data-toggle="collapse">Latest Stats</a>
+    <div id="page-stats" class="panel-collapse panel-body collapse in">
+
+        <div class="row">
+            @{int dem = 0;}
+            @foreach (var item in Model)
+            {
+                dem++;
+                <div class="col-md-3 col-sm-6">
+                    <div class="knob-container">
+                        <div style="display: inline; width: 200px; height: 200px;"> <canvas width="200" height="200"></canvas> <input class="knob" data-width="200" data-min="0" data-max="100" data-displayprevious="true" value="@item.SoLuong" data-fgcolor="#92A3C2" data-readonly="true;" readonly="readonly" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 33px; line-height: normal; font-family: Arial; text-align: center; color: rgb(146, 163, 194); padding: 0px; -webkit-appearance: none;"> </div>
+                        <h3 class="text-muted text-center">@item.TenMatHang</h3>
+                    </div>
+                </div>
+                if (dem == 4)
+                {
+                    break;
+                }
+            }
+        </div>
+    </div> 
+</div>*@
+
+<div class="panel panel-default">
+    <a href="#page-stats" class="panel-heading" data-toggle="collapse">Latest Stats</a>
+    <div id="page-stats" class="panel-collapse panel-body collapse in">
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="knob-container">
+                    <div style="display: inline; width: 200px; height: 200px;"><canvas width="200" height="200"></canvas><input class="knob" data-width="200" data-min="0" data-max="3000" data-displayprevious="true" value="2500" data-fgcolor="#92A3C2" data-readonly="true;" readonly="readonly" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 33px; line-height: normal; font-family: Arial; text-align: center; color: rgb(146, 163, 194); padding: 0px; -webkit-appearance: none;"></div>
+                    <h3 class="text-muted text-center">Accounts</h3>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="knob-container">
+                    <div style="display: inline; width: 200px; height: 200px;"><canvas width="200" height="200"></canvas><input class="knob" data-width="200" data-min="0" data-max="4500" data-displayprevious="true" value="3299" data-fgcolor="#92A3C2" data-readonly="true;" readonly="readonly" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 33px; line-height: normal; font-family: Arial; text-align: center; color: rgb(146, 163, 194); padding: 0px; -webkit-appearance: none;"></div>
+                    <h3 class="text-muted text-center">Subscribers</h3>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="knob-container">
+                    <div style="display: inline; width: 200px; height: 200px;"><canvas width="200" height="200"></canvas><input class="knob" data-width="200" data-min="0" data-max="2700" data-displayprevious="true" value="1840" data-fgcolor="#92A3C2" data-readonly="true;" readonly="readonly" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 33px; line-height: normal; font-family: Arial; text-align: center; color: rgb(146, 163, 194); padding: 0px; -webkit-appearance: none;"></div>
+                    <h3 class="text-muted text-center">Pending</h3>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="knob-container">
+                    <div style="display: inline; width: 200px; height: 200px;"><canvas width="200" height="200"></canvas><input class="knob" data-width="200" data-min="0" data-max="15000" data-displayprevious="true" value="10067" data-fgcolor="#92A3C2" data-readonly="true;" readonly="readonly" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 28px; line-height: normal; font-family: Arial; text-align: center; color: rgb(146, 163, 194); padding: 0px; -webkit-appearance: none;"></div>
+                    <h3 class="text-muted text-center">Completed</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

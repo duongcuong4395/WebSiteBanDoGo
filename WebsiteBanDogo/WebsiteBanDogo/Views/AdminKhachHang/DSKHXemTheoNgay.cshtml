@@ -1,0 +1,53 @@
+﻿@using WebsiteBanDogo.Models 
+@model List<NguoiXem> 
+ 
+<div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+        <a href="#widget1container" class="panel-heading" data-toggle="collapse">LƯỢT NGƯỜI VÀO WEB</a>
+        <div id="widget1container" class="panel-body collapse in">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 20%; padding-left: 3%;">STT</th>
+                        <th>Ngày Cập Nhật</th>
+                        <th style="width: 30%; padding-left: 5%;">Số Người vào web</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="scroll_box">
+                <table class="table">
+                    <thead hidden="hidden">
+                        <tr>
+                            <th>STT</th>
+                            <th>Ngày Cập Nhật</th>
+                            <th>Số Người vào web</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyDSXem" class="DSXemBody">
+                        @{ int stt = 0;}
+                        @foreach (var item in Model)
+                        {
+                            stt++;
+                            <tr class="trDSXem">
+                                <td>@stt</td>
+                                <td>
+                                    @String.Format("{0:dd/MM/yyyy}", item.NgayXem)
+                                </td>
+                                <td>@item.SoNguoiXem</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<style>
+    #scroll_box {
+        border: 1px solid #ffffff;
+        height: 240px;
+        overflow: auto;
+    }
+</style>

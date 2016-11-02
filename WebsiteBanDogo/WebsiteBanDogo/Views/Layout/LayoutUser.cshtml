@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb='http://www.facebook.com/2008/fbml' xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content=@ViewBag.Keywords>
+        <meta name="description" content=@ViewBag.Description> 
+        
+
+        <meta property="fb:admins" content="100000686899395" />
+        <meta property="fb:admins" content="169088780207376" />
+
+        <title>@ViewBag.Title</title>
+        <link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <link href="/Content/css/prettyPhoto.css" rel="stylesheet" />
+        <link href="/Content/css/price-range.css" rel="stylesheet" />
+        <link href="/Content/css/animate.css" rel="stylesheet" />
+        @*<link href="/Content/css/main.css" rel="stylesheet" />*@
+        <link href="~/Content/css/main.css" rel="stylesheet" />
+        <link href="/Content/css/responsive.css" rel="stylesheet" />
+        <link href=”http://yoursite.com/favicon.ico” rel=”shortcut icon” />
+        <link rel="shortcut icon" href="~/Pictures/favicon.ico"> 
+
+        @RenderSection("HeadIncludes", required: false) 
+        @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.gallery.js"></script> 
+        <link href="~/Content/datepicker.css" rel="stylesheet" />*@  
+        @*<link href="/Content/css/font-awesome.min.css" rel="stylesheet" />*@
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    </head><!--/head-->
+
+    <body onload="init()"> 
+    
+    
+
+        <header id="header">
+            <!--header-->
+            <div class="header_top">
+                <!--header_top-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="contactinfo">
+                                <ul class="nav nav-pills">
+                                    <li><a href="#"><i class="fa fa-phone"></i> (08) - 3075379</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>dogoCuongThai@gmail.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div><!--/header_top-->
+
+            <div class="header-middle">
+                <!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="logo pull-left">
+                                <a href="@Url.Action("Index","DoGoStore")"> 
+                                    <img src="~/Pictures/Logo/logo7.png" alt="DoGoCuongThai.jpg" class="img-responsive" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <ul class="nav navbar-nav">
+                                    @Html.Partial("DangNhapPartial")
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header-middle-->
+
+            <div class="header-bottom">
+                <!--header-bottom-->
+                <div class="container" id="header-bottom">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="mainmenu pull-left">
+                                @Html.Partial("MenuChinhPartial")
+                            </div>
+                        </div>
+                        <div class="col-sm-3" style="width: 30%; float: right">
+                            <div class="search_box pull-right" style="width: 100%;">
+                                @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    <div style="float:left;">
+                                        <input id="TIMKIEM" type="text" placeholder="Tìm kiếm...." name="txtTimKiem" class="txtTimKiem" required />
+                                    </div>
+                                    <div style=" float:right;">
+                                        <button type="submit" class="btn btn-default" style="width: 40%;">
+                                            <img src="~/Pictures/Loadingimage/ic_search_48px-128.png" style="width: 50%; height: 50%" />
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header-bottom-->
+        </header><!--/header-->
+
+        <section id="slider">
+            @Html.Partial("QuangCaoPartial")
+        </section>
+
+        <section id="cart_items">
+            <div class="container">
+                @*@RenderSection("GioiThieuCuaHang", false)*@
+                @RenderSection("LienHeRenderSection", false)
+                @RenderSection("GioHangRenderSection", false)
+                @RenderSection("DatHangRenderSection", false) 
+            </div>
+        </section> <!--/#cart_items-->
+
+        <section id="main">
+            <div class="container" id="main2">
+                <div class="row">
+                    <div class="col-sm-3" >
+                        @*Div Chứa loại đồ gỗ *@
+                        <div class="left-sidebar">
+                            <h2 id="LOAIDOGO">LOẠI SẢN PHẨM</h2>
+                            <div class="panel-group category-products" id="accordian">
+                                @Html.Action("LoaiDoGoPartial", "LoaiDoGo")
+                            </div><!--/category-pro ducts--> 
+                            @Html.Action("TimKiemTheoGia", "TimKiem", false)
+                            <div class="price-range">
+                                <!--price-range-->
+                                <h2>Liên hệ</h2>
+                                <div class="fb-page" data-href="https://www.facebook.com/DoGoCuongThai/" data-width="250" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                                    <blockquote cite="https://www.facebook.com/DoGoCuongThai/" class="fb-xfbml-parse-ignore">
+                                        <a href="https://www.facebook.com/DoGoCuongThai/">Đồ gỗ đẹp Cường Thái</a>
+                                    </blockquote>
+                                </div>
+                            </div>
+                         
+                            <div class="shipping text-center">
+                                @Html.Action("soLuongNguoiXem", "DoGoStore")
+                            </div><!--/shipping-->
+                            <div class="shipping text-center">
+                                <iframe frameborder="0" marginwidth="0" marginheight="0" src="http://thienduongweb.com/tool/weather/?r=1&w=1&g=1&col=1&d=0" style="width: 100%;" height="300" scrolling="yes"></iframe> 
+                            </div><!--/shipping-->
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-9 padding-right">
+                        <!--features_items-->
+                        @RenderBody()
+
+                        
+
+                        <div class="XemChiTiet">
+                            <div class="col-sm-12">
+                                @RenderSection("XemChiTiet", false)
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+          
+        </section> 
+
+        <footer id="footer"> 
+        @Html.Partial("FooterPartial") 
+        </footer><!--/Footer-->
+         
+        <script src="~/Scripts/js/jquery.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/jquery.scrollUp.min.js"></script>
+        <script src="~/Scripts/js/price-range.js"></script>
+        <script src="~/Scripts/js/jquery.prettyPhoto.js"></script>
+        <script src="~/Scripts/js/main.js"></script> 
+        <script src="~/Scripts/ThemScript/bootstrap-datepicker.js"></script> 
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#pickyDate').datepicker({
+                    format: "dd/mm/yyyy"
+                });
+            });
+        </script> 
+         
+        <script src="~/Scripts/ScriptLoadingPage/LoadingPage.js"></script>
+    
+        <script src="~/Scripts/ScriptGoogleMap/GoogleMap.js"></script>
+      
+
+
+        <script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml &up_source_language=vi&w=160&h=60&title=&border=&output=js"> </script>
+         
+        <script src="/Scripts/ThemScript/facebook.js"></script>
+        <script src="~/Scripts/ThemScript/TongHopScriptMoi.js"></script>
+       
+        <script>
+            function heartBeat() {
+                $.get("KeepAlive.ashx?", function (data) { });
+            }
+
+            $(function () {
+                setInterval("heartBeat()", 1000 * 30); // 30s gửi request một lần
+            });
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgu-Biz5geySgi99huIbX4bvUpmKtlV8&callback=initMap"> </script>
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-60343429-1', 'auto');
+            ga('send', 'pageview');
+        </script>  
+
+        <script type="text/javascript">
+            $(document).ready(function () { 
+            var monthNames = ["Tháng giêng", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+            var dayNames = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
+                 
+            var newDate = new Date(); 
+            newDate.setDate(newDate.getDate()); 
+            $('#Date').html(dayNames[newDate.getDay() - 1] + " " + "Ngày " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + "Năm " + newDate.getFullYear());
+
+            setInterval(function () { 
+                var seconds = new Date().getSeconds(); 
+                $("#sec").html((seconds < 10 ? "0" : "") + seconds);
+            }, 1000);
+
+            setInterval(function () { 
+                var minutes = new Date().getMinutes(); 
+                $("#min").html((minutes < 10 ? "0" : "") + minutes);
+            }, 1000);
+
+            setInterval(function () { 
+                var hours = new Date().getHours(); 
+                $("#hours").html((hours < 10 ? "0" : "") + hours);
+            }, 1000); 
+        });
+        </script> 
+    </body>
+</html>

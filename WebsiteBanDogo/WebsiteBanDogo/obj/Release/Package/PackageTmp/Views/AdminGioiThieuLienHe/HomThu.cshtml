@@ -1,0 +1,83 @@
+﻿<div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse">
+            THƯ GÓP Ý
+            <span class="label label-warning">
+                @if (ViewBag.soluongthu > 10)
+                {
+                    <text> +10</text>
+                }
+                else
+                {
+                    @ViewBag.soluongthu
+                }
+            </span>
+        </div>
+
+        <div id="scroll_box_HomThu">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Ngày gửi</th>
+                        <th>Người gửi</th>
+                        <th>Email</th>
+
+                        <th>Nội dung</th>
+                        <th>Xử lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int stt = 0;}
+                    @foreach (var item in Model)
+                    {
+                        stt++;
+                        <tr>
+                            <td>@stt</td>
+                            <td>@String.Format("{0:yyyy/MM/dd}", item.NgayGui)</td>
+                            <td>
+                                @if (@item.TenNguoiGui.Length < 10)
+                                {
+                                    <p>@item.TenNguoiGui</p>
+                                }
+                                else
+                                {
+                                    <p> @item.TenNguoiGui.Substring(0, 10)...</p>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.Email.Length < 10)
+                                {
+                                    <p>@item.Email</p>
+                                }
+                                else
+                                {
+                                    <p> @item.Email.Substring(0, 10)...</p>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.NoiDung.Length < 10)
+                                {
+                                    <p>@item.Email</p>
+                                }
+                                else
+                                {
+                                    <p> @item.NoiDung.Substring(0, 10)...</p>
+                                }
+                            </td>
+                            <td>Xem</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    #scroll_box_HomThu {
+        border: 1px solid #ffffff;
+        height: 341px;
+        overflow: auto;
+    }
+</style>

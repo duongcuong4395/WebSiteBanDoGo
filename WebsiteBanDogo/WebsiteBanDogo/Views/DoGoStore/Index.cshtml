@@ -1,0 +1,108 @@
+﻿@using WebsiteBanDogo.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<HANGHOA>
+
+@{
+    ViewBag.Title = "Đồ gỗ đẹp Cường - Thái | DoGoCuongThai.com"; 
+    ViewBag.Description = "web cung cấp mặt hàng đồ gỗ tốt nhất hiện nay.";
+    ViewBag.Keywords = "DoGoCuongThai"; 
+    Layout = "~/Views/Layout/LayoutUser.cshtml";  
+}
+
+<div class="features_items"> 
+    <h2 class="title text-center">HÀNG MỚI NHẬP</h2> 
+    <h3>@ViewBag.ThongBao</h3>
+    @{int dem = 0;}
+    @foreach (var item in Model)
+    {
+        dem++;
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        @if (@item.KhuyenMai != 0)
+                        {
+                            <div class="offer">- @item.KhuyenMai%</div>
+                        }
+                        <div class="thumbnail">
+                            <a href="@Url.Action("XemChiTiet","DoGo", new {id = item.MaMatHang})">
+                                <img src="~/Pictures/HangHoa/@item.HinhAnh" class="img-responsive" alt="@item.HinhAnh" style="width: 60%; height: 100%" />
+                            </a>
+                        </div> 
+                        <h2>@String.Format("{0:0,0}", item.DonGia) VND</h2>
+                        @if (@item.TenMatHang.Length < 20)
+                        {
+                            <p>@item.TenMatHang</p>
+                        }
+                        else
+                        {
+                            <p> @item.TenMatHang.Substring(0, 20)...</p>
+                        } 
+                    </div>
+                    <div class="product-overlay">
+                        <img src="/Pictures/HangHoa/@item.HinhAnh" alt="@item.TenMatHang" style="width: 60%; height: 100%; margin-left:20%; padding-bottom: 50%" />
+                        <div class="overlay-content">
+                            <h2>@String.Format("{0:0,0}", item.DonGia) VND</h2>
+                            @if (@item.TenMatHang.Length < 20)
+                            {
+                                <p>@item.TenMatHang</p>
+                            }
+                            else
+                            {
+                                <p> @item.TenMatHang.Substring(0, 20)...</p>
+                            }
+                            <a href="@Url.Action("XemChiTiet","DoGo", new {id = item.MaMatHang})" class="btn btn-default add-to-cart"><i class="fa fa-th-list" aria-hidden="true"></i>Xem chi tiết</a>
+                            @*<a href="@item.LOAIHANG.TenLoaiHang.ToString()_@item.MaLoaiHang/@item.TenMatHang.ToString()__@item.MaMatHang" class="btn btn-default add-to-cart"><i class="fa fa-th-list" aria-hidden="true"></i>Xem chi tiết</a>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="choose">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><a href="@Url.Action("ThemSPYeuThich", "DoGoStore", new { MaMatHang = @item.MaMatHang, @strURL = Request.Url.ToString() })"><i class="fa fa-heart" aria-hidden="true"></i>Thích sản phẩm</a></li> 
+                        <li><a href="@Url.Action("ThemGioHang", "GioHang", new { @sMaMatHang = @item.MaMatHang, @strURL = Request.Url.ToString() }) "><i class=" fa fa-shopping-cart"></i>đặt mua</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        if (dem == 3)
+        {
+            <div style="clear:both"></div>
+            dem = 0;
+        }
+    }
+</div>
+
+ 
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Trong tổng số @Model.PageCount Trang;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+<div class="recommended_items">
+    @Html.Action("layHangBanChay", "DoGoStore", false)
+</div>
+<style>
+    #cart_items, .XemChiTiet {
+        display: none;
+    }
+
+    .recommended_items {
+        display: block;
+    }
+
+    .offer{
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 99;
+        padding: 10px;
+        font-size: 18px;
+        color: #fff;
+        background: #f7544a;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+
+    }
+
+    .thumbnail{float: left;position: relative;width: 100%;margin: 45px 0 5px 0;padding: 0;height: 230px;border: none;text-align: center;}
+</style> 

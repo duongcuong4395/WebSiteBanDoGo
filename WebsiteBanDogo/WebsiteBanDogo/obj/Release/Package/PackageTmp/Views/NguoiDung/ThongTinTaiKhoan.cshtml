@@ -1,0 +1,96 @@
+﻿@using WebsiteBanDogo.Models
+@model KHACHHANG
+
+@{
+    ViewBag.Title = "ThongTinTaiKhoan";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+    <div class="content-main" >
+        <div >
+            <div class="title-main">
+                <h3><i class="fa fa-cubes"></i>THÔNG TIN KHÁCH HÀNG.</h3>
+            </div> 
+            <div class="table-responsive table-striped">
+
+                @*<div class="input-group">
+                <label class="lb-mid">MÃ KHÁCH HÀNG:  </label>
+                @Html.DisplayFor(id => id.MaKhachHang)
+            </div>*@
+
+                <table class="table table-hover">
+                    <tr>
+                        <th style="width:40%;">
+                            TÊN KHÁCH HÀNG:
+                        </th>
+                        <td style="width:40%;">
+                            @Model.TenKhachHang
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            TÊN TÀI KHOẢN:
+                        </th>
+                        <td>
+                            @Model.TaiKhoan
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            EMAIL:
+                        </th>
+                        <td>
+                            @Model.Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            ĐỊA CHỈ:
+                        </th>
+                        <td>
+                            @Model.DiaChi
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            SỐ ĐIỆN THOẠI:
+                        </th>
+                        <td>
+                            @Model.SoDienThoai
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            SỐ TÀI KHOẢN:
+                        </th>
+                        <td>
+                            @Model.SoTaiKhoan
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            NGÀY SINH:
+                        </th>
+                        <td>
+                            @String.Format("{0:MM/dd/yyyy}", Model.NgaySinh)
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    @Html.ActionLink("ĐIỀU CHỈNH", "SuaThongTinKH", new { id = Model.MaKhachHang })
+                    @Html.ActionLink("TRỞ VỀ", "Index", "DoGoStore")
+                </p>
+            </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<style>
+    .XemChiTiet, .recommended_items{
+        display: none;
+    }
+</style>
+
+
+
+
+

@@ -1,0 +1,22 @@
+﻿@model WebsiteBanDogo.Models.GIOITHIEU
+
+@{
+    ViewBag.Title = "SuaGioiThieu";
+    Layout = "~/Views/Layout/LayoutAdmin.cshtml";
+}
+
+<h2>SuaGioiThieu</h2>
+
+@using (Html.BeginForm("SuaGioiThieu", "AdminGioiThieuLienHe", FormMethod.Post))
+{ 
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MaGioiThieu)
+    <p>Mã giới thiệu: @ViewBag.MaGioiThieu</p>
+    <p>Tiêu đề: <input id="Nhap" type="text" placeholder="Tiêu đề...." maxlength="50"   data-toggle="tooltip" data-placement="bottom" name="TieuDe" title="Không bỏ trống ô Đăng nhập." required /> </p>
+    <p> Nội dung cũ: @Model.NoiDung</p>
+    <p>Nội dung</p> <textarea name="NoiDung"></textarea> 
+    <p>Hotline:      <input id="Nhap" type="text" placeholder="Hotline....." maxlength="50"   data-toggle="tooltip" data-placement="bottom" name="Hotline" title="Không bỏ trống ô mật khẩu." required /> </p>
+    @Html.ActionLink("Quên mật khẩu?", "LayMatKhau", "NguoiDung")
+    <button type="submit" class="btn btn-default">Lưu</button>
+}

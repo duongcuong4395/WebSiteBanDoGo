@@ -1,0 +1,87 @@
+﻿@using WebsiteBanDogo.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+
+@section GioHangRenderSection {
+    <h2 style="text-align: center">THÔNG TIN GIỎ HÀNG</h2>
+    <h3>@ViewBag.Thongbao</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr class="cart_menu">
+                <td class="image" width="10%;">Hình ảnh</td>
+                <td class="description" width="20%;">Tên sản phẩm</td>
+                <td class="quantity" width="7%;">Số lượng</td>
+                <td class="price" width="15%;">Giá (VND/1 sản phẩm)</td>
+                <td class="total" width="20%;">Tổng tiền</td>
+                <td  style="width:20%;" >Xử lý</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> 
+                        <img style="width: 70%; height:30%" src="~/Pictures/HangHoa/@item.sAnhBia" id="anhbia" alt="@item.sAnhBia" /> 
+                    </td>
+                    <td class="cart_description" height="100px">
+                        <p width="1%;"><a href="">@item.sTenHangHoa</a></p>
+                        <p>@item.sMaMatHang</p>
+                    </td>
+                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { id = item.sMaMatHang }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false)
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <input type="number" name="txtSoLuong" min="1" value="@item.iSoLuong" style="background-color:yellow; width: 60%;" />@ViewData["txtSoLuongHang"]
+                            </div>
+                        </td>
+                        <td class="cart_price">
+                            <p style="color: red; font-weight: bold;">@String.Format("{0:0,0}", item.dGiaMoi) VND</p>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price" style="color: red; font-weight:bold;">@String.Format("{0:0,0}", item.dThanhTien) VND</p>
+                        </td>
+                        <td   >
+                            <a href="@Url.Action("XemChiTiet", "DoGo", new {id = item.sMaMatHang })"><i class="fa fa-list-alt fa-2x" aria-hidden="true"></i> Chi tiết</a>
+                            <br /> 
+                            <a class="cart_quantity_delete" href="@Url.Action("XoaGioHang", "GioHang", new {id = item.sMaMatHang })"><i class="fa fa-trash-o fa-2x"></i> Xóa sản phẩm</a>
+                            <br />
+                            <button type="submit" class="btn btn-default btn-lg btn-block" style="width: 30px; height: 40px;">
+                                <i class="fa fa-refresh fa-1x" aria-hidden="true"></i>
+                            </button> 
+                        </td>
+                    }
+                </tr>
+            }
+            <tr style="font-weight: bold; text-align: right; color: red">
+                <td colspan="4">Số lượng sản phẩm: @ViewBag.TongSoLuong</td>
+                <td colspan="5">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VND</td>
+            </tr>
+            <tr style="font-weight: bold; color: blue; text-align: right">
+                <td colspan="9"> 
+                    <i class="fa fa-trash-o fa-lg"> </i>
+                        @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang") 
+                </td>
+            </tr>
+            <tr style="font-weight: bold; color: blue; text-align: right">
+                <td colspan="9" align="center">
+                    @Html.ActionLink("ĐẶT HÀNG", "DatHang", "GioHang")
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+}
+
+<style>
+     .left-sidebar, .recommended_items, #loaidogo {
+        display: none;
+    }
+</style>

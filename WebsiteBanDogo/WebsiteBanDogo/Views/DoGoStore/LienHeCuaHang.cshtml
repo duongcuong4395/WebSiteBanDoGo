@@ -1,0 +1,97 @@
+﻿@model List<WebsiteBanDogo.Models.LIENHE>
+
+
+@{
+    ViewBag.Title = "Liên hệ của hàng";
+    Layout = "~/Views/Layout/LayoutUser.cshtml"; 
+} 
+@section LienHeRenderSection {
+    <hr /> 
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="title text-center">LIÊN HỆ CỬA HÀNG</h2> 
+                    <div id="map" class="contact-map"></div>
+                    <button class="btn btn-primary" onclick="timDuongDi()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tìm đường đi</button> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="contact-form">
+                        <h2 class="title text-center">GỬI THƯ</h2>
+                        <h2 class="title text-center">@ViewBag.ThongBao</h2>
+                        <h2 class="title text-center">@ViewBag.ThongBao2</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        @using (Html.BeginForm("LienHeCuaHang", "DoGoStore", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" placeholder="Tên bạn...." maxlength="50" name="TenNguoiGui" required="required" title="Không bỏ trống." />
+                                @*<input type="text" name="name" class="form-control" required="required" placeholder="Name">*@
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control" placeholder="Trum_Trum_252513@gmail.com" maxlength="100" oninput="VietKhongDau(this)" name="Email" required="required" title="Không bỏ trống." /> 
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Chủ đề...." maxlength="100" name="ChuDe" title="Không bỏ trống." required="required" /> 
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea class="form-control" placeholder="Nội dung ...." id="message" name="NoiDung" rows="8" required></textarea> 
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary" style="float: right; width: auto; height: auto;"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Gửi </button>
+                                
+                            </div>
+                        </form>
+                        }
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="contact-info">
+                        <h2 class="title text-center">THÔNG TIN LIÊN LẠC</h2>
+                        <address> 
+                            @foreach (var item in Model)
+                            { 
+                                <p >Cơ sở sản xuất: 57 Điện Biên Phủ, P27, Q Bình Thạnh. @*@item.CoSoSanXuat*@</p> 
+                                <p >Email: dogoCuongThai@gmail.com. @*@item.EmailLienHe*@</p> 
+                                <p >Điện thoại bàn: (08) - 3075379. @*@item.DienThoai*@</p> 
+                                <p >Mobile: 0939436735.@*@item.Mobile*@</p> 
+                            } 
+                        </address>
+                        <div class="social-networks">
+                            <h2 class="title text-center">MẠNG XÃ HỘI</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/DoGoCuongThai/" rel="noopener noreferrer" target="_blank"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://plus.google.com/u/0/photos/photo/107514748680109575605/6346514219561057586?icm=false&authkey=CJOZy56jk8rrhgE" rel="noopener noreferrer" target="_blank"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    @*<a href="#"><i class="fa fa-google-plus"></i></a>*@
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UC373shphCMBBL-Fhp8-G9RQ" rel="noopener noreferrer" target="_blank"><i class="fa fa-youtube"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+}
+<style>
+    #map {
+        width: 100%;
+        height: 300px;
+    }
+
+
+     #loaidogo, #main {
+        display: none;
+    }
+</style>

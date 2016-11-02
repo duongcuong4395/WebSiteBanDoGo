@@ -1,0 +1,137 @@
+﻿@using WebsiteBanDogo.Models
+@model HANGHOA
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Layout/LayoutUser.cshtml";
+}
+
+@section XemChiTiet {
+    <div class="product-details">
+        <!--product-details-->
+        <h3>@Model.TenMatHang</h3>
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId=169088780207376";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="col-sm-5">
+            <div class="view-product">
+                <img src="@Url.Content("/Pictures/HangHoa/" + Model.HinhAnh)" alt="Hình ảnh">
+                <h3>
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+                        <p style="font-size: 16px; font-weight:bold;">Hình ảnh lớn</p>
+                    </button>
+                </h3>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">@Model.TenMatHang</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="view-product">
+                            <img src="@Url.Content("/Pictures/HangHoa/" + Model.HinhAnh)" alt="hình ảnh">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <div class="btn btn-success">
+                            <p style="font-size: 20pt; font-weight: bold; color: yellow;"><a href="@Url.Action("ThemGioHang", "GioHang", new { @sMaMatHang = @Model.MaMatHang, @strURL = Request.Url.ToString() })">ĐẶT MUA</a></p>
+                        </div>
+                        <div class="fb-comments" data-href="http://dogocuongthai.azurewebsites.net/DoGo/XemChiTiet/@Model.MaMatHang" data-width="350" data-numposts="5" style="float:left"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="product-information">
+                @if (Model.KhuyenMai == 0)
+                {
+                    <p style="color: red; font-weight: bold; font-size: 18pt;">@String.Format("{0:0,0}", Model.DonGia) VNĐ </p>
+                }
+                else
+                {
+                    <p style="color: red; font-weight: bold; font-size: 18pt;">@String.Format("{0:0,0}", Model.GiaMoi) VNĐ</p>
+                    <p>Giá trước đây: <s style="color: red; font-weight: bold;">@String.Format("{0:0,0}", Model.DonGia) VNĐ</s></p>
+                }
+                <table>
+                    <tr>
+                        <th>Mã sản phẩm: </th>
+                        <td>@Model.MaMatHang</td>
+                    </tr>
+                    <tr>
+                        <th>Kích thước: </th>
+                        <td>
+                            @if (Model.KichThuoc == "cường chưa có nhập" || Model.KichThuoc == null)
+                            {
+                                <p>Vui lòng liên hệ trục tiếp với cửa hàng.</p>
+                            } 
+                            else
+                            {
+                                @Model.KichThuoc
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Loại gỗ: </th>
+                        <td>
+                            @if (Model.LoaiGo == "cường chưa có nhập" || Model.LoaiGo == null)
+                            {
+                                <p>Vui lòng liên hệ trục tiếp với cửa hàng.</p>
+                            }
+                            else
+                            {
+                                @Model.LoaiGo
+                            }
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bảo hành: </th>
+                        <td><p style="color: red; font-size: 18pt;">@Model.BaoHanh Tháng</p></td>
+                    </tr>
+                </table>
+                <div>
+                    <span>
+                        <p>
+                            Để biết thêm thông tin chi tiết liên hệ với chúng tôi<a href="@Url.Action("LienHeCuaHang", "DoGoStore")"> tại đây</a>.
+                        </p>
+                    </span>
+                </div>
+
+                <div class="fb-like" data-href="http://dogocuongthai.azurewebsites.net/DoGo/XemChiTiet/@Model.MaMatHang" data-width="300" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                <div style="clear: both"></div>
+                <div class="btn btn-success">
+                    <p style="font-size: 20pt; font-weight: bold; color: yellow;"><a href="@Url.Action("ThemGioHang", "GioHang", new { @sMaMatHang = @Model.MaMatHang, @strURL = Request.Url.ToString() })">ĐẶT MUA</a></p>
+                </div>
+
+                @Html.Raw(Model.LinkThanhToan)
+
+                @*<div class="embed-responsive embed-responsive-4by3" >
+                        <iframe class="embed-responsive-item" frameborder="0" marginwidth="0" marginheight="0" src="http://www.reviewcompany.vn/free-service/gold/" scrolling="yes"></iframe>
+                    </div>*@
+            </div>
+        </div>
+
+    </div>
+    @Html.Action("layHangBanChay", "DoGoStore", false)
+}
+
+
+
+@*Css Thong tin sach*@
+<style>
+    #slider, .brands_products, .recommended_items {
+        display: none;
+    }
+</style>  
